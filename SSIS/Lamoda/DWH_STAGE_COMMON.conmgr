@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DWH_STAGE_COMMON"
+  DTS:DTSID="{2D15F417-4FF8-491B-A26D-3723C75F21FF}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=bi-sql-dc;Initial Catalog=DWH_STAGE_COMMON;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Lamoda-{2D15F417-4FF8-491B-A26D-3723C75F21FF}DWH01.grt.gretta.ru.DWH_STAGE_COMMON;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

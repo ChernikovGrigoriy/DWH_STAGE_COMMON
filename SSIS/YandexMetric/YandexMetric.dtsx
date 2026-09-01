@@ -1,0 +1,315 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/1/2025 7:55:08 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC498"
+  DTS:CreatorName="TBOE-TM\g.chernikov"
+  DTS:DTSID="{766BCA2B-3C81-4A92-ADE9-B619ED770C76}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="YandexMetric"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{A8E3A10B-6111-4233-9736-BAF1AE62196B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E15ED04A-EDD2-4B5E-9BF0-41FED9B2561D}"
+      DTS:ObjectName="pToken">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">y0_AgAAAABkW9P8AAzc_QAAAAEaV1aLAABBYM6rQGxH-4cDLDJOhoq0oKOveQ</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5DDE64D-766A-4560-8263-A8FEE11C5B4C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vSYSMOMENT">
+      <DTS:VariableValue
+        DTS:DataType="7">4/1/2025 7:56:18 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get_SYSMOMENT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{55dea733-20b4-45ac-805f-c9a9d484ed64}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get_SYSMOMENT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}"
+          SQLTask:SqlStatementSource="SELECT ISNULL(MAX(DATEADD(day,-2,SYSMOMENT)), '20220101') FROM [dbo].[SYS_PackageLoad] WHERE PackageName = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vSYSMOMENT" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SET_SYSMOMENT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8b9854f8-3879-4778-b1f0-e68430d45c1b}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SET_SYSMOMENT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}"
+          SQLTask:SqlStatementSource="MERGE [dbo].[SYS_PackageLoad] TGT&#xA;USING (SELECT ? [PackageName], ? [SYSMOMENT]) SRC ON TGT.PackageName = SRC.PackageName&#xA;WHEN MATCHED THEN&#xA; Update SET SYSMOMENT = SRC.SYSMOMENT&#xA;WHEN NOT MATCHED THEN&#xA; INSERT ([PackageName], [SYSMOMENT])&#xA; VALUES (SRC.[PackageName], SRC.SYSMOMENT);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Загрузка"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7FC28211-C5CC-40A0-8D7E-112E27467E84}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Загрузка">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Загрузка\Counters"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{DCABF3D1-E855-4C0E-99E1-9AA915E74974}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Counters"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Counters.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pToken</ParameterName>
+                <BindedVariableOrParameterName>$Package::pToken</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Загрузка\Log_Visits"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{869B83CF-8CF3-43FF-BAA2-9FEF34C7F34C}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log_Visits"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Log_Visits.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pSYSMOMENT</ParameterName>
+                <BindedVariableOrParameterName>User::vSYSMOMENT</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>pToken</ParameterName>
+                <BindedVariableOrParameterName>$Package::pToken</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Загрузка.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3BEA3974-F3D1-479F-BA28-8318A539488F}"
+          DTS:From="Package\Загрузка\Counters"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Загрузка\Log_Visits" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0215E36-A408-4BF0-8C66-87F9F13DAB47}"
+      DTS:From="Package\Get_SYSMOMENT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Загрузка" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Загрузка]"
+      DTS:CreationName=""
+      DTS:DTSID="{8E777101-7476-48F5-BF7B-4A14F9893BA2}"
+      DTS:From="Package\Загрузка"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Загрузка"
+      DTS:To="Package\SET_SYSMOMENT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Get_SYSMOMENT"
+          TopLeft="194,105" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\SET_SYSMOMENT"
+          TopLeft="192.98412698412,311.801587301583" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Загрузка\Counters"
+          TopLeft="63,21" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Загрузка\Log_Visits"
+          TopLeft="62,116" />
+        <EdgeLayout
+          Id="Package\Загрузка.PrecedenceConstraints[Constraint]"
+          TopLeft="175.75,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="393,213"
+          Size="393,256"
+          Id="Package\Загрузка"
+          TopLeft="641,121" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="356,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="285,81.6666666666667"
+              Start="0,0"
+              End="277.5,81.6666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="165.937888198758,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="165.937888198758,0"
+                    Point2="169.937888198758,0"
+                    Point3="169.937888198758,4" />
+                  <mssgle:LineSegment
+                    End="169.937888198758,77.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="169.937888198758,77.6666666666667"
+                    Point2="169.937888198758,81.6666666666667"
+                    Point3="173.937888198758,81.6666666666667" />
+                  <mssgle:LineSegment
+                    End="277.5,81.6666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Загрузка]"
+          TopLeft="641,290.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-284.01587301588,42.4682539682497"
+              Start="0,0"
+              End="-276.51587301588,42.4682539682497">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-110.664793453616,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-110.664793453616,0"
+                    Point2="-114.664793453616,0"
+                    Point3="-114.664793453616,4" />
+                  <mssgle:LineSegment
+                    End="-114.664793453616,38.4682539682497" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-114.664793453616,38.4682539682497"
+                    Point2="-114.664793453616,42.4682539682497"
+                    Point3="-118.664793453616,42.4682539682497" />
+                  <mssgle:LineSegment
+                    End="-276.51587301588,42.4682539682497" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

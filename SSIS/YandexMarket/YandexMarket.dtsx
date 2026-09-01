@@ -1,0 +1,622 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/17/2025 4:03:41 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC498"
+  DTS:CreatorName="TBOE-TM\g.chernikov"
+  DTS:DTSID="{3ABE7C49-DCBF-43D1-9C77-84798F30A790}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Yandex_Market"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{07634A22-EC44-4093-98FF-7B1D89BF9B7A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{EA635A6A-387C-40BF-B15A-7705F6FD29A7}"
+      DTS:ObjectName="pApiKey">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">ACMA:f1tjOCW217l5XdPorTbF65TuIkeRmcE7Iw8225xl:59682b9e</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{56556EDC-D99C-4C83-9861-CC9E2AFB8FEB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vSYSMOMENT">
+      <DTS:VariableValue
+        DTS:DataType="7">3/17/2025 4:05:41 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get_SYSMOMENT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{47dc826f-3571-4f8d-b5ee-28a579456568}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get_SYSMOMENT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A8AE848C-C20D-4D50-91D9-9AEA14023632}"
+          SQLTask:SqlStatementSource="SELECT ISNULL(MAX(DATEADD(day,-10,SYSMOMENT)), '20220101') FROM [dbo].[SYS_PackageLoad] WHERE PackageName = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vSYSMOMENT" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SET_SYSMOMENT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8cb78aea-3604-4f4a-82d8-8f724a338ce1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SET_SYSMOMENT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A8AE848C-C20D-4D50-91D9-9AEA14023632}"
+          SQLTask:SqlStatementSource="MERGE [dbo].[SYS_PackageLoad] TGT&#xA;USING (SELECT ? [PackageName], ? [SYSMOMENT]) SRC ON TGT.PackageName = SRC.PackageName&#xA;WHEN MATCHED THEN&#xA; Update SET SYSMOMENT = SRC.SYSMOMENT&#xA;WHEN NOT MATCHED THEN&#xA; INSERT ([PackageName], [SYSMOMENT])&#xA; VALUES (SRC.[PackageName], SRC.SYSMOMENT);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Справочники"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{90820C84-EF2C-48DB-B59B-D1FF489429E7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Справочники">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Справочники\campaigns"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{834C23D4-DBEB-4EA7-B89E-476717BAB00A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="campaigns"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>campaigns.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Справочники\v2_businesses_businessId_offer-mappings"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{87BD04DC-AED6-4879-A6F6-C9DECF5D339D}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v2_businesses_businessId_offer-mappings"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>v2_businesses_businessId_offer-mappings.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Справочники\warehouses"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{465DE2E1-D9CE-4BE1-B399-BD626B309E05}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="warehouses"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>warehouses.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Справочники.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9CD76217-203B-4B45-9A64-3AC762A2E401}"
+          DTS:From="Package\Справочники\campaigns"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Справочники\v2_businesses_businessId_offer-mappings" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Факты"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{39B8FD25-20C7-4152-B119-A9EED996D800}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Факты">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Факты\campaigns_offers_stocks"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{80FE811E-AFE6-4112-BBF2-06993B962E8A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="campaigns_offers_stocks"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>campaigns_offers_stocks.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\reports_united-orders"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:Disabled="True"
+          DTS:DTSID="{526B7525-7F15-4A05-88B3-DAC964E1923F}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="reports_united-orders"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>reports_united-orders.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>pSYSMOMENT</ParameterName>
+                <BindedVariableOrParameterName>User::vSYSMOMENT</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\SalesBoost"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="SalesBoost"
+          DTS:DTSID="{DEF18AF5-9205-48FE-995B-A78D478CD401}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SalesBoost"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>SalesBoost.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pSYSMOMENT</ParameterName>
+                <BindedVariableOrParameterName>User::vSYSMOMENT</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\Sales_Funnel_Report"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:Disabled="True"
+          DTS:DTSID="{6971326F-F2EE-43A3-8B9B-2BA53BDD4A8D}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sales_Funnel_Report"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Sales_Funnel_Report.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>pSYSMOMENT</ParameterName>
+                <BindedVariableOrParameterName>User::vSYSMOMENT</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\stats_skus"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{C1F655F1-7E41-4313-BAFA-A0696245F261}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="stats_skus"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>stats_skus.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>pApiKey</ParameterName>
+                <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\v2_reports_goods_realization"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Задача &quot;Выполнение пакета&quot;"
+          DTS:DTSID="{40BD0DFA-4CD2-44C0-8BF4-4F18661F4AC8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v2_reports_goods_realization"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>v2_reports_goods_realization.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Факты\Отчеты и документы"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{448733ab-f6e1-4f7c-a323-19b577d15078}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Отчеты и документы">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Факты\Отчеты и документы\Аналитические отчеты"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:DTSID="{bb65c9db-c632-4f5f-a999-96f5119dd9b8}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Аналитические отчеты">
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Факты\Отчеты и документы\Аналитические отчеты\v2_reports_shows-sales"
+                  DTS:CreationName="Microsoft.ExecutePackageTask"
+                  DTS:Description="Задача &quot;Выполнение пакета&quot;"
+                  DTS:DTSID="{f2a255a2-0736-459e-977a-26e03d1c99b5}"
+                  DTS:ExecutableType="Microsoft.ExecutePackageTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="v2_reports_shows-sales"
+                  DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ExecutePackageTask>
+                      <UseProjectReference>True</UseProjectReference>
+                      <PackageName>v2_reports_shows-sales.dtsx</PackageName>
+                      <ParameterAssignment>
+                        <ParameterName>pApiKey</ParameterName>
+                        <BindedVariableOrParameterName>$Package::pApiKey</BindedVariableOrParameterName>
+                      </ParameterAssignment>
+                      <ParameterAssignment>
+                        <ParameterName>pSYSMOMENT</ParameterName>
+                        <BindedVariableOrParameterName>User::vSYSMOMENT</BindedVariableOrParameterName>
+                      </ParameterAssignment>
+                    </ExecutePackageTask>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Факты\Отчеты и документы\Операционные отчеты"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:DTSID="{D6C81DF9-31EB-488D-A663-B2D8EC6ECA89}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Операционные отчеты">
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Факты\Отчеты и документы\Операционные отчеты\v2_reports_united-orders (отчет по заказам)"
+                  DTS:CreationName="Microsoft.ExecutePackageTask"
+                  DTS:Description="Задача &quot;Выполнение пакета&quot;"
+                  DTS:DTSID="{DE53B16C-4113-44DA-B348-CA38AEC23818}"
+                  DTS:ExecutableType="Microsoft.ExecutePackageTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="v2_reports_united-orders (отчет по заказам)"
+                  DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ExecutePackageTask>
+                      <UseProjectReference>True</UseProjectReference>
+                      <PackageName>v2_reports_united-orders.dtsx</PackageName>
+                    </ExecutePackageTask>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{73F24503-0DB8-40F8-BBD8-22727AEA4275}"
+      DTS:From="Package\Справочники"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Факты" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{58206B9F-F2A5-4A35-AD1F-43D9CA044C0F}"
+      DTS:From="Package\Get_SYSMOMENT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Справочники" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Get_SYSMOMENT"
+          TopLeft="69,320" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\SET_SYSMOMENT"
+          TopLeft="1594.98412698412,331.801587301583" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Справочники\campaigns"
+          TopLeft="108,19" />
+        <NodeLayout
+          Size="299,42"
+          Id="Package\Справочники\v2_businesses_businessId_offer-mappings"
+          TopLeft="44,97" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Справочники\warehouses"
+          TopLeft="108.5,181.5" />
+        <EdgeLayout
+          Id="Package\Справочники.PrecedenceConstraints[Constraint]"
+          TopLeft="190,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="370,315"
+          Size="370,358"
+          Id="Package\Справочники"
+          TopLeft="439,215" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\reports_united-orders"
+          TopLeft="54,148" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\Sales_Funnel_Report"
+          TopLeft="54,256" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\stats_skus"
+          TopLeft="54,77" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\Отчеты и документы\Аналитические отчеты\v2_reports_shows-sales"
+          TopLeft="13,11" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="238,83"
+          Size="238,126"
+          Id="Package\Факты\Отчеты и документы\Аналитические отчеты"
+          TopLeft="251,20" />
+        <NodeLayout
+          Size="219,48"
+          Id="Package\Факты\Отчеты и документы\Операционные отчеты\v2_reports_united-orders (отчет по заказам)"
+          TopLeft="34,13" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="289,85"
+          Size="289,128"
+          Id="Package\Факты\Отчеты и документы\Операционные отчеты"
+          TopLeft="520,18.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="814,181"
+          Size="814,224"
+          Id="Package\Факты\Отчеты и документы"
+          TopLeft="39,380" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\campaigns_offers_stocks"
+          TopLeft="328.5,157" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Факты\v2_reports_goods_realization"
+          TopLeft="326,78" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Факты\SalesBoost"
+          TopLeft="333,249" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="890,762"
+          Size="890,805"
+          Id="Package\Факты"
+          TopLeft="997,151" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="809,394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188,159.5"
+              Start="0,0"
+              End="180.5,159.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90,0"
+                    Point2="94,0"
+                    Point3="94,4" />
+                  <mssgle:LineSegment
+                    End="94,155.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,155.5"
+                    Point2="94,159.5"
+                    Point3="98,159.5" />
+                  <mssgle:LineSegment
+                    End="180.5,159.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="231,341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="208,53"
+              Start="0,0"
+              End="200.5,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="100,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100,0"
+                    Point2="104,0"
+                    Point3="104,4" />
+                  <mssgle:LineSegment
+                    End="104,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104,49"
+                    Point2="104,53"
+                    Point3="108,53" />
+                  <mssgle:LineSegment
+                    End="200.5,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

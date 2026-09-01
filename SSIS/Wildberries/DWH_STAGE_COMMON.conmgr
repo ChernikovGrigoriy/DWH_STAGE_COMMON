@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DWH_STAGE_COMMON"
+  DTS:DTSID="{CE8F9A80-A998-4424-9C87-6C5E058DD44D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=bi-sql-dc;Initial Catalog=DWH_STAGE_COMMON;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Wildberries-{CE8F9A80-A998-4424-9C87-6C5E058DD44D}bi-sql-dc.DWH_STAGE_COMMON;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

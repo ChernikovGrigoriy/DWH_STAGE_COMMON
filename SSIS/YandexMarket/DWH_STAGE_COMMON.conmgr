@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DWH_STAGE_COMMON"
+  DTS:DTSID="{A8AE848C-C20D-4D50-91D9-9AEA14023632}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=bi-sql-dc;Initial Catalog=DWH_STAGE_COMMON;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-YandexMarket-{A8AE848C-C20D-4D50-91D9-9AEA14023632}bi-sql-dc.DWH_STAGE_COMMON;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

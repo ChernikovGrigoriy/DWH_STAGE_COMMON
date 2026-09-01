@@ -1,0 +1,3497 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/1/2025 7:52:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC498"
+  DTS:CreatorName="TBOE-TM\g.chernikov"
+  DTS:DTSID="{CCBA9C80-0BBE-4A06-8070-86431875D51C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Counters"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{F95084FF-D94F-4A19-AB6E-D28EB083311E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{A7215384-A101-4F4E-8A9B-BBC4B196D891}"
+      DTS:ObjectName="pToken">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">y0_AgAAAABkW9P8AAzc_QAAAAEaV1aLAABBYM6rQGxH-4cDLDJOhoq0oKOveQ</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Буфер"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{97256859-2da7-4d4b-bda4-c8d91c316709}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Буфер"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Буфер\Источник"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Источник"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public OutputBuffer OutputBuffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != OutputBuffer)
+        {
+            OutputBuffer.SetEndOfRowset();
+            OutputBuffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output"))
+            {
+                OutputBuffer = new OutputBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String pToken
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["pToken"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using System.Net;
+using System.Text;
+using System.Threading;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    #region Шаблон
+    public class Response
+    {
+        public int rows { get; set; }
+        public Response_Counter[] counters { get; set; }
+    }
+
+    public class Response_Counter
+    {
+        public long id { get; set; }
+        public string status { get; set; }
+        public string owner_login { get; set; }
+        public string code_status { get; set; }
+        public string activity_status { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public int? favorite { get; set; }
+        public int? hide_address { get; set; }
+        public int? pro { get; set; }
+        public string permission { get; set; }
+        public Response_Counter_Webvisor webvisor { get; set; }
+        public Response_Counter_code_options code_options { get; set; }
+        public DateTime? create_time { get; set; }
+        public string time_zone_name { get; set; }
+        public int time_zone_offset { get; set; }
+        public int partner_id { get; set; }
+        public string site { get; set; }
+        public Response_Counter_site2 site2 { get; set; }
+        public int? gdpr_agreement_accepted { get; set; }
+    }
+
+    public class Response_Counter_Webvisor
+    {
+        public string urls { get; set; }
+        public int? arch_enabled { get; set; }
+        public string arch_type { get; set; }
+        public string load_player_type { get; set; }
+        public int wv_version { get; set; }
+        public bool? allow_wv2 { get; set; }
+        public int? wv_forms { get; set; }
+    }
+
+    public class Response_Counter_code_options
+    {
+        public int? async { get; set; }
+        public Response_Counter_code_options_informer informer { get; set; }
+        public int? visor { get; set; }
+        public int? track_hash { get; set; }
+        public int? xml_site { get; set; }
+        public int? clickmap { get; set; }
+        public int? in_one_line { get; set; }
+        public int? ecommerce { get; set; }
+        public int? alternative_cdn { get; set; }
+        public string ecommerce_object { get; set; }
+        public bool? ytm { get; set; }
+    }
+
+    public class Response_Counter_code_options_informer
+    {
+        public int? enabled { get; set; }
+        public string type { get; set; }
+        public int? size { get; set; }
+        public string indicator { get; set; }
+        public string color_start { get; set; }
+        public string color_end { get; set; }
+        public int? color_text { get; set; }
+        public int? color_arrow { get; set; }
+    }
+
+    public class Response_Counter_site2
+    {
+        public string site { get; set; }
+        public string domain { get; set; }
+    }
+    #endregion
+
+    public class TimeoutWebClient : WebClient
+    {
+        /// <summary>
+        /// Default constructor (30000 ms timeout)
+        /// NOTE: timeout can be changed later on using the [Timeout] property.
+        /// </summary>
+        public TimeoutWebClient() : this(30000) { }
+
+        /// <summary>
+        /// Constructor with customizable timeout
+        /// </summary>
+        /// <param name="timeout">
+        /// Web request timeout (in milliseconds)
+        /// </param>
+        public TimeoutWebClient(int timeout)
+        {
+            Timeout = timeout;
+        }
+
+        #region Methods
+        protected override WebRequest GetWebRequest(Uri uri)
+        {
+            WebRequest w = base.GetWebRequest(uri);
+            w.Timeout = Timeout;
+            ((HttpWebRequest)w).ReadWriteTimeout = Timeout;
+            return w;
+        }
+        #endregion
+
+        /// <summary>
+        /// Web request timeout (in milliseconds)
+        /// </summary>
+        public int Timeout { get; set; }
+    }
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        byte[] oDATA = null;
+
+        string vError = null;
+
+        try
+        {
+            int i = 1;
+            while (i <= 6)
+            {
+                try
+                {
+                    TimeoutWebClient oTWC = new TimeoutWebClient(600000);
+                    string vURL = String.Format("https://api-metrika.yandex.net/management/v1/counters");
+                    oTWC.Headers.Add(HttpRequestHeader.Authorization, string.Format("OAuth {0}", Variables.pToken));
+                    oDATA = oTWC.DownloadData(vURL);
+                    oTWC = null;
+
+                    break;
+                }
+                catch (Exception e)
+                {
+                    if (e.Message.Contains("Too Many Requests"))
+                    {
+                        Thread.Sleep(20000 * i);
+                        i++;
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            if (i > 6)
+                throw new ApplicationException("Слишком большое количество обращений к серверу YandexMetrica");
+
+            JavaScriptSerializer oJSS = new JavaScriptSerializer();
+            oJSS.MaxJsonLength = int.MaxValue;
+
+            Response oResponse = oJSS.Deserialize<Response>(Encoding.UTF8.GetString(oDATA));
+
+            foreach(Response_Counter item in oResponse.counters)
+            {
+                OutputBuffer.AddRow();
+                OutputBuffer.id = item.id;
+                if (item.status != null && item.status.Length > 0) OutputBuffer.status = item.status.Length > 100 ? item.status.Substring(0, 100) : item.status;
+                if (item.owner_login != null && item.owner_login.Length > 0) OutputBuffer.ownerlogin = item.owner_login.Length > 100 ? item.owner_login.Substring(0, 100) : item.owner_login;
+                if (item.code_status != null && item.code_status.Length > 0) OutputBuffer.codestatus = item.code_status.Length > 100 ? item.code_status.Substring(0, 100) : item.code_status;
+                if (item.activity_status != null && item.activity_status.Length > 0) OutputBuffer.activitystatus = item.activity_status.Length > 100 ? item.activity_status.Substring(0, 100) : item.activity_status;
+                if (item.name != null && item.name.Length > 0) OutputBuffer.name = item.name.Length > 100 ? item.name.Substring(0, 100) : item.name;
+                if (item.type != null && item.type.Length > 0) OutputBuffer.type = item.type.Length > 100 ? item.type.Substring(0, 100) : item.type;
+                if (item.favorite != null) OutputBuffer.favorite = (int) item.favorite;
+                if (item.hide_address != null) OutputBuffer.hideaddress = (int)item.hide_address;
+                if (item.pro != null) OutputBuffer.pro = (int)item.pro;
+                if (item.permission != null && item.permission.Length > 0) OutputBuffer.permission = item.permission.Length > 100 ? item.permission.Substring(0, 100) : item.permission;
+                if (item.webvisor != null)
+                {
+                    if (item.webvisor.urls != null && item.webvisor.urls.Length > 0) OutputBuffer.webvisorurls = item.webvisor.urls.Length > 100 ? item.webvisor.urls.Substring(0, 100) : item.webvisor.urls;
+                    if (item.webvisor.arch_enabled != null) OutputBuffer.webvisorarchenabled = (int)item.webvisor.arch_enabled;
+                    if (item.webvisor.arch_type != null && item.webvisor.arch_type.Length > 0) OutputBuffer.webvisorarchtype = item.webvisor.arch_type.Length > 100 ? item.webvisor.arch_type.Substring(0, 100) : item.webvisor.arch_type;
+                    if (item.webvisor.load_player_type != null && item.webvisor.load_player_type.Length > 0) OutputBuffer.webvisorloadplayertype = item.webvisor.load_player_type.Length > 100 ? item.webvisor.load_player_type.Substring(0, 100) : item.webvisor.load_player_type;
+                    if (item.webvisor.wv_version != null) OutputBuffer.webvisorwvversion = (int)item.webvisor.wv_version;
+                    if (item.webvisor.allow_wv2 != null) OutputBuffer.webvisorallowwv2 = (bool)item.webvisor.allow_wv2;
+                    if (item.webvisor.wv_forms != null) OutputBuffer.webvisorwvforms = (int)item.webvisor.wv_forms;
+                }
+                if (item.code_options != null)
+                {
+                    if (item.code_options.async != null) OutputBuffer.codeoptionsasync = (int)item.code_options.async;
+                    if (item.code_options.informer != null)
+                    {
+                        if (item.code_options.informer.enabled != null) OutputBuffer.codeoptionsinformerenabled = (int)item.code_options.informer.enabled;
+                        if (item.code_options.informer.type != null && item.code_options.informer.type.Length > 0) OutputBuffer.codeoptionsinformertype = item.code_options.informer.type.Length > 100 ? item.code_options.informer.type.Substring(0, 100) : item.code_options.informer.type;
+                        if (item.code_options.informer.size != null) OutputBuffer.codeoptionsinformersize = (int)item.code_options.informer.size;
+                        if (item.code_options.informer.indicator != null && item.code_options.informer.indicator.Length > 0) OutputBuffer.codeoptionsinformerindicator = item.code_options.informer.indicator.Length > 100 ? item.code_options.informer.indicator.Substring(0, 100) : item.code_options.informer.indicator;
+                        if (item.code_options.informer.color_start != null && item.code_options.informer.color_start.Length > 0) OutputBuffer.codeoptionsinformercolorstart = item.code_options.informer.color_start.Length > 100 ? item.code_options.informer.color_start.Substring(0, 100) : item.code_options.informer.color_start;
+                        if (item.code_options.informer.color_end != null && item.code_options.informer.color_end.Length > 0) OutputBuffer.codeoptionsinformercolorend = item.code_options.informer.color_end.Length > 100 ? item.code_options.informer.color_end.Substring(0, 100) : item.code_options.informer.color_end;
+                        if (item.code_options.informer.color_text != null) OutputBuffer.codeoptionsinformercolortext = (int)item.code_options.informer.color_text;
+                        if (item.code_options.informer.color_arrow != null) OutputBuffer.codeoptionsinformercolorarrow = (int)item.code_options.informer.color_arrow;
+                    }
+                    if (item.code_options.visor != null) OutputBuffer.codeoptionsvisor = (int)item.code_options.visor;
+                    if (item.code_options.track_hash != null) OutputBuffer.codeoptionstrackhash = (int)item.code_options.track_hash;
+                    if (item.code_options.xml_site != null) OutputBuffer.codeoptionsxmlsite = (int)item.code_options.xml_site;
+                    if (item.code_options.clickmap != null) OutputBuffer.codeoptionsclickmap = (int)item.code_options.clickmap;
+                    if (item.code_options.in_one_line != null) OutputBuffer.codeoptionsinoneline = (int)item.code_options.in_one_line;
+                    if (item.code_options.ecommerce != null) OutputBuffer.codeoptionsecommerce = (int)item.code_options.ecommerce;
+                    if (item.code_options.alternative_cdn != null) OutputBuffer.codeoptionsalternativecdn = (int)item.code_options.alternative_cdn;
+                    if (item.code_options.ecommerce_object != null && item.code_options.ecommerce_object.Length > 0) OutputBuffer.codeoptionsecommerceobject = item.code_options.ecommerce_object.Length > 100 ? item.code_options.ecommerce_object.Substring(0, 100) : item.code_options.ecommerce_object;
+                    if (item.code_options.ytm != null) OutputBuffer.codeoptionsytm = (bool)item.code_options.ytm;
+                }
+                if (item.create_time != null) OutputBuffer.createtime = (DateTime)item.create_time;
+                if (item.time_zone_name != null && item.time_zone_name.Length > 0) OutputBuffer.timezonename = item.time_zone_name.Length > 100 ? item.time_zone_name.Substring(0, 100) : item.time_zone_name;
+                if (item.time_zone_offset != null) OutputBuffer.timezoneoffset = (int)item.time_zone_offset;
+                if (item.partner_id != null) OutputBuffer.partnerid = (int)item.partner_id;
+                if (item.site != null && item.site.Length > 0) OutputBuffer.site = item.site.Length > 100 ? item.site.Substring(0, 100) : item.site;
+                if (item.site2 != null)
+                {
+                    if (item.site2.site != null && item.site2.site.Length > 0) OutputBuffer.site2site = item.site2.site.Length > 100 ? item.site2.site.Substring(0, 100) : item.site2.site;
+                    if (item.site2.domain != null && item.site2.domain.Length > 0) OutputBuffer.site2domain = item.site2.domain.Length > 100 ? item.site2.domain.Substring(0, 100) : item.site2.domain;
+                }
+                if (item.gdpr_agreement_accepted != null) OutputBuffer.gdpragreementaccepted = (int)item.gdpr_agreement_accepted;
+            }
+        }
+        catch (Exception e)
+        {
+            bool cancel;
+            ComponentMetaData.FireError(10, string.Format("{0}", vError), e.Message, "", 0, out cancel);
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_5c00721514d440aea035372d94d62aab.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D2D289D-C076-405F-B541-AEAC919D90E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_5c00721514d440aea035372d94d62aab</RootNamespace>
+    <AssemblyName>SC_5c00721514d440aea035372d94d62aab</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5c00721514d440aea035372d94d62aab.Properties.Settings.get_Default():SC_5c00721514d440aea035372d94d62aab.Properties.Sett" +
+    "ings")]
+
+namespace SC_5c00721514d440aea035372d94d62aab.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class OutputBuffer: ScriptBuffer
+
+{
+    public OutputBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int64 id
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool id_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String status
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool status_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String ownerlogin
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool ownerlogin_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codestatus
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool codestatus_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String activitystatus
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool activitystatus_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String name
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool name_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String type
+    {
+        set
+        {
+            this[6] = value;
+        }
+    }
+    public bool type_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(6);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 favorite
+    {
+        set
+        {
+            this[7] = value;
+        }
+    }
+    public bool favorite_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(7);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 hideaddress
+    {
+        set
+        {
+            this[8] = value;
+        }
+    }
+    public bool hideaddress_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(8);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 pro
+    {
+        set
+        {
+            this[9] = value;
+        }
+    }
+    public bool pro_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(9);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String permission
+    {
+        set
+        {
+            this[10] = value;
+        }
+    }
+    public bool permission_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(10);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String webvisorurls
+    {
+        set
+        {
+            this[11] = value;
+        }
+    }
+    public bool webvisorurls_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(11);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 webvisorarchenabled
+    {
+        set
+        {
+            this[12] = value;
+        }
+    }
+    public bool webvisorarchenabled_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(12);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String webvisorarchtype
+    {
+        set
+        {
+            this[13] = value;
+        }
+    }
+    public bool webvisorarchtype_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(13);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String webvisorloadplayertype
+    {
+        set
+        {
+            this[14] = value;
+        }
+    }
+    public bool webvisorloadplayertype_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(14);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 webvisorwvversion
+    {
+        set
+        {
+            this[15] = value;
+        }
+    }
+    public bool webvisorwvversion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(15);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Boolean webvisorallowwv2
+    {
+        set
+        {
+            this[16] = value;
+        }
+    }
+    public bool webvisorallowwv2_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(16);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 webvisorwvforms
+    {
+        set
+        {
+            this[17] = value;
+        }
+    }
+    public bool webvisorwvforms_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(17);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsasync
+    {
+        set
+        {
+            this[18] = value;
+        }
+    }
+    public bool codeoptionsasync_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(18);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsinformerenabled
+    {
+        set
+        {
+            this[19] = value;
+        }
+    }
+    public bool codeoptionsinformerenabled_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(19);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codeoptionsinformertype
+    {
+        set
+        {
+            this[20] = value;
+        }
+    }
+    public bool codeoptionsinformertype_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(20);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsinformersize
+    {
+        set
+        {
+            this[21] = value;
+        }
+    }
+    public bool codeoptionsinformersize_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(21);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codeoptionsinformerindicator
+    {
+        set
+        {
+            this[22] = value;
+        }
+    }
+    public bool codeoptionsinformerindicator_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(22);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codeoptionsinformercolorstart
+    {
+        set
+        {
+            this[23] = value;
+        }
+    }
+    public bool codeoptionsinformercolorstart_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(23);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codeoptionsinformercolorend
+    {
+        set
+        {
+            this[24] = value;
+        }
+    }
+    public bool codeoptionsinformercolorend_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(24);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsinformercolortext
+    {
+        set
+        {
+            this[25] = value;
+        }
+    }
+    public bool codeoptionsinformercolortext_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(25);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsinformercolorarrow
+    {
+        set
+        {
+            this[26] = value;
+        }
+    }
+    public bool codeoptionsinformercolorarrow_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(26);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsvisor
+    {
+        set
+        {
+            this[27] = value;
+        }
+    }
+    public bool codeoptionsvisor_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(27);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionstrackhash
+    {
+        set
+        {
+            this[28] = value;
+        }
+    }
+    public bool codeoptionstrackhash_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(28);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsxmlsite
+    {
+        set
+        {
+            this[29] = value;
+        }
+    }
+    public bool codeoptionsxmlsite_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(29);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsclickmap
+    {
+        set
+        {
+            this[30] = value;
+        }
+    }
+    public bool codeoptionsclickmap_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(30);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsinoneline
+    {
+        set
+        {
+            this[31] = value;
+        }
+    }
+    public bool codeoptionsinoneline_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(31);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsecommerce
+    {
+        set
+        {
+            this[32] = value;
+        }
+    }
+    public bool codeoptionsecommerce_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(32);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 codeoptionsalternativecdn
+    {
+        set
+        {
+            this[33] = value;
+        }
+    }
+    public bool codeoptionsalternativecdn_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(33);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String codeoptionsecommerceobject
+    {
+        set
+        {
+            this[34] = value;
+        }
+    }
+    public bool codeoptionsecommerceobject_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(34);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Boolean codeoptionsytm
+    {
+        set
+        {
+            this[35] = value;
+        }
+    }
+    public bool codeoptionsytm_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(35);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public DateTime createtime
+    {
+        set
+        {
+            this[36] = value;
+        }
+    }
+    public bool createtime_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(36);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String timezonename
+    {
+        set
+        {
+            this[37] = value;
+        }
+    }
+    public bool timezonename_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(37);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 timezoneoffset
+    {
+        set
+        {
+            this[38] = value;
+        }
+    }
+    public bool timezoneoffset_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(38);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 partnerid
+    {
+        set
+        {
+            this[39] = value;
+        }
+    }
+    public bool partnerid_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(39);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String site
+    {
+        set
+        {
+            this[40] = value;
+        }
+    }
+    public bool site_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(40);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String site2site
+    {
+        set
+        {
+            this[41] = value;
+        }
+    }
+    public bool site2site_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(41);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String site2domain
+    {
+        set
+        {
+            this[42] = value;
+        }
+    }
+    public bool site2domain_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(42);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 gdpragreementaccepted
+    {
+        set
+        {
+            this[43] = value;
+        }
+    }
+    public bool gdpragreementaccepted_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(43);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_5c00721514d440aea035372d94d62aab</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_5c00721514d440aea035372d94d62aab</msb:DisplayName>
+    <msb:ProjectId>{4713DA68-B8DD-45D2-9C77-E624D662D81F}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_5c00721514d440aea035372d94d62aab.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_5c00721514d440aea035372d94d62aab")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_5c00721514d440aea035372d94d62aab")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5c00721514d440aea035372d94d62aab.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5c00721514d440aea035372d94d62aab.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5c00721514d440aea035372d94d62aab.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_5c00721514d440aea035372d94d62aab.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_5c00721514d440aea035372d94d62aab.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_5c00721514d440aea035372d94d62aab.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAH9x62cAAAAAAAAAAOAAIiALATAAAGAAAAAIAAAAAAAAsn4A
+AAAgAAAAgAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAADAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGB+AABPAAAAAIAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAKAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAuF4AAAAgAAAAYAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAgAAAAAYAAABiAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAKAAAAACAAAAaAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACU
+fgAAAAAAAEgAAAACAAUAJDkAAIREAAABAAAAAAAAAKh9AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACiobMAcADw0AAAEAABEUChQLFwwr
+bQAgwCcJAHPbAAAGcgEAAHAoAQAAKygTAAAKDSVvFAAACh8Ycm0AAHACewIAAARvaAAABigVAAAK
+bxYAAAoJbxcAAAoK3itvGAAACnKBAABwbxkAAAosEiAgTgAACFooGgAACggXWAwrAv4a3gAIHDGP
+CBwxC3KlAABwcxsAAAp6cxwAAAolIP///39vHQAACigeAAAKBm8fAAAKbwIAACtvcgAABhMEFhMF
+OB8MAAARBBEFmhMGAnsDAAAEb14AAAYCewMAAAQRBm91AAAGbwYAAAYRBm93AAAGLEIRBm93AAAG
+byEAAAoWMTMCewMAAAQRBm93AAAGbyEAAAofZDAJEQZvdwAABisPEQZvdwAABhYfZG8iAAAKbwgA
+AAYRBm95AAAGLEIRBm95AAAGbyEAAAoWMTMCewMAAAQRBm95AAAGbyEAAAofZDAJEQZveQAABisP
+EQZveQAABhYfZG8iAAAKbwoAAAYRBm97AAAGLEIRBm97AAAGbyEAAAoWMTMCewMAAAQRBm97AAAG
+byEAAAofZDAJEQZvewAABisPEQZvewAABhYfZG8iAAAKbwwAAAYRBm99AAAGLEIRBm99AAAGbyEA
+AAoWMTMCewMAAAQRBm99AAAGbyEAAAofZDAJEQZvfQAABisPEQZvfQAABhYfZG8iAAAKbw4AAAYR
+Bm9/AAAGLEIRBm9/AAAGbyEAAAoWMTMCewMAAAQRBm9/AAAGbyEAAAofZDAJEQZvfwAABisPEQZv
+fwAABhYfZG8iAAAKbxAAAAYRBm+BAAAGLEIRBm+BAAAGbyEAAAoWMTMCewMAAAQRBm+BAAAGbyEA
+AAofZDAJEQZvgQAABisPEQZvgQAABhYfZG8iAAAKbxIAAAYRBm+DAAAGEwcSBygjAAAKLBsCewMA
+AAQRBm+DAAAGEwcSBygkAAAKbxQAAAYRBm+FAAAGEwcSBygjAAAKLBsCewMAAAQRBm+FAAAGEwcS
+BygkAAAKbxYAAAYRBm+HAAAGEwcSBygjAAAKLBsCewMAAAQRBm+HAAAGEwcSBygkAAAKbxgAAAYR
+Bm+JAAAGLEIRBm+JAAAGbyEAAAoWMTMCewMAAAQRBm+JAAAGbyEAAAofZDAJEQZviQAABisPEQZv
+iQAABhYfZG8iAAAKbxoAAAYRBm+LAAAGOfUBAAARBm+LAAAGb54AAAYsVhEGb4sAAAZvngAABm8h
+AAAKFjFCAnsDAAAEEQZviwAABm+eAAAGbyEAAAofZDAOEQZviwAABm+eAAAGKxQRBm+LAAAGb54A
+AAYWH2RvIgAACm8cAAAGEQZviwAABm+gAAAGEwcSBygjAAAKLCACewMAAAQRBm+LAAAGb6AAAAYT
+BxIHKCQAAApvHgAABhEGb4sAAAZvogAABixWEQZviwAABm+iAAAGbyEAAAoWMUICewMAAAQRBm+L
+AAAGb6IAAAZvIQAACh9kMA4RBm+LAAAGb6IAAAYrFBEGb4sAAAZvogAABhYfZG8iAAAKbyAAAAYR
+Bm+LAAAGb6QAAAYsVhEGb4sAAAZvpAAABm8hAAAKFjFCAnsDAAAEEQZviwAABm+kAAAGbyEAAAof
+ZDAOEQZviwAABm+kAAAGKxQRBm+LAAAGb6QAAAYWH2RvIgAACm8iAAAGEQZviwAABm+mAAAGJgJ7
+AwAABBEGb4sAAAZvpgAABm8kAAAGEQZviwAABm+oAAAGEwgSCCglAAAKLCACewMAAAQRBm+LAAAG
+b6gAAAYTCBIIKCYAAApvJgAABhEGb4sAAAZvqgAABhMHEgcoIwAACiwgAnsDAAAEEQZviwAABm+q
+AAAGEwcSBygkAAAKbygAAAYRBm+NAAAGOVwFAAARBm+NAAAGb60AAAYTBxIHKCMAAAosIAJ7AwAA
+BBEGb40AAAZvrQAABhMHEgcoJAAACm8qAAAGEQZvjQAABm+vAAAGOfgCAAARBm+NAAAGb68AAAZv
+xAAABhMHEgcoIwAACiwlAnsDAAAEEQZvjQAABm+vAAAGb8QAAAYTBxIHKCQAAApvLAAABhEGb40A
+AAZvrwAABm/GAAAGLGoRBm+NAAAGb68AAAZvxgAABm8hAAAKFjFRAnsDAAAEEQZvjQAABm+vAAAG
+b8YAAAZvIQAACh9kMBMRBm+NAAAGb68AAAZvxgAABisZEQZvjQAABm+vAAAGb8YAAAYWH2RvIgAA
+Cm8uAAAGEQZvjQAABm+vAAAGb8gAAAYTBxIHKCMAAAosJQJ7AwAABBEGb40AAAZvrwAABm/IAAAG
+EwcSBygkAAAKbzAAAAYRBm+NAAAGb68AAAZvygAABixqEQZvjQAABm+vAAAGb8oAAAZvIQAAChYx
+UQJ7AwAABBEGb40AAAZvrwAABm/KAAAGbyEAAAofZDATEQZvjQAABm+vAAAGb8oAAAYrGREGb40A
+AAZvrwAABm/KAAAGFh9kbyIAAApvMgAABhEGb40AAAZvrwAABm/MAAAGLGoRBm+NAAAGb68AAAZv
+zAAABm8hAAAKFjFRAnsDAAAEEQZvjQAABm+vAAAGb8wAAAZvIQAACh9kMBMRBm+NAAAGb68AAAZv
+zAAABisZEQZvjQAABm+vAAAGb8wAAAYWH2RvIgAACm80AAAGEQZvjQAABm+vAAAGb84AAAYsahEG
+b40AAAZvrwAABm/OAAAGbyEAAAoWMVECewMAAAQRBm+NAAAGb68AAAZvzgAABm8hAAAKH2QwExEG
+b40AAAZvrwAABm/OAAAGKxkRBm+NAAAGb68AAAZvzgAABhYfZG8iAAAKbzYAAAYRBm+NAAAGb68A
+AAZv0AAABhMHEgcoIwAACiwlAnsDAAAEEQZvjQAABm+vAAAGb9AAAAYTBxIHKCQAAApvOAAABhEG
+b40AAAZvrwAABm/SAAAGEwcSBygjAAAKLCUCewMAAAQRBm+NAAAGb68AAAZv0gAABhMHEgcoJAAA
+Cm86AAAGEQZvjQAABm+xAAAGEwcSBygjAAAKLCACewMAAAQRBm+NAAAGb7EAAAYTBxIHKCQAAApv
+PAAABhEGb40AAAZvswAABhMHEgcoIwAACiwgAnsDAAAEEQZvjQAABm+zAAAGEwcSBygkAAAKbz4A
+AAYRBm+NAAAGb7UAAAYTBxIHKCMAAAosIAJ7AwAABBEGb40AAAZvtQAABhMHEgcoJAAACm9AAAAG
+EQZvjQAABm+3AAAGEwcSBygjAAAKLCACewMAAAQRBm+NAAAGb7cAAAYTBxIHKCQAAApvQgAABhEG
+b40AAAZvuQAABhMHEgcoIwAACiwgAnsDAAAEEQZvjQAABm+5AAAGEwcSBygkAAAKb0QAAAYRBm+N
+AAAGb7sAAAYTBxIHKCMAAAosIAJ7AwAABBEGb40AAAZvuwAABhMHEgcoJAAACm9GAAAGEQZvjQAA
+Bm+9AAAGEwcSBygjAAAKLCACewMAAAQRBm+NAAAGb70AAAYTBxIHKCQAAApvSAAABhEGb40AAAZv
+vwAABixWEQZvjQAABm+/AAAGbyEAAAoWMUICewMAAAQRBm+NAAAGb78AAAZvIQAACh9kMA4RBm+N
+AAAGb78AAAYrFBEGb40AAAZvvwAABhYfZG8iAAAKb0oAAAYRBm+NAAAGb8EAAAYTCBIIKCUAAAos
+IAJ7AwAABBEGb40AAAZvwQAABhMIEggoJgAACm9MAAAGEQZvjwAABhMJEgkoJwAACiwbAnsDAAAE
+EQZvjwAABhMJEgkoKAAACm9OAAAGEQZvkQAABixCEQZvkQAABm8hAAAKFjEzAnsDAAAEEQZvkQAA
+Bm8hAAAKH2QwCREGb5EAAAYrDxEGb5EAAAYWH2RvIgAACm9QAAAGEQZvkwAABiYCewMAAAQRBm+T
+AAAGb1IAAAYRBm+VAAAGJgJ7AwAABBEGb5UAAAZvVAAABhEGb5cAAAYsQhEGb5cAAAZvIQAAChYx
+MwJ7AwAABBEGb5cAAAZvIQAACh9kMAkRBm+XAAAGKw8RBm+XAAAGFh9kbyIAAApvVgAABhEGb5kA
+AAY5yAAAABEGb5kAAAZv1QAABixWEQZvmQAABm/VAAAGbyEAAAoWMUICewMAAAQRBm+ZAAAGb9UA
+AAZvIQAACh9kMA4RBm+ZAAAGb9UAAAYrFBEGb5kAAAZv1QAABhYfZG8iAAAKb1gAAAYRBm+ZAAAG
+b9cAAAYsVhEGb5kAAAZv1wAABm8hAAAKFjFCAnsDAAAEEQZvmQAABm/XAAAGbyEAAAofZDAOEQZv
+mQAABm/XAAAGKxQRBm+ZAAAGb9cAAAYWH2RvIgAACm9aAAAGEQZvmwAABhMHEgcoIwAACiwbAnsD
+AAAEEQZvmwAABhMHEgcoJAAACm9cAAAGEQUXWBMFEQURBI5pP9bz///eKxMKAigpAAAKHwpyHwEA
+cAcoFQAAChEKbxgAAApyJwEAcBYSC28qAAAK3gAqAEE0AAAAAAAACQAAAEUAAABOAAAAJwAAABAA
+AAEAAAAABAAAAN8MAADjDAAAKwAAABAAAAEeAihhAAAGKioCAwQFKCsAAAoqOgIWA4wpAAABKCwA
+AAoqWgMsCAIWKC0AAAoqcikBAHBzLgAACnomAhcDKCwAAAoqWgMsCAIXKC0AAAoqcikBAHBzLgAA
+CnomAhgDKCwAAAoqWgMsCAIYKC0AAAoqcikBAHBzLgAACnomAhkDKCwAAAoqWgMsCAIZKC0AAAoq
+cikBAHBzLgAACnomAhoDKCwAAAoqWgMsCAIaKC0AAAoqcikBAHBzLgAACnomAhsDKCwAAAoqWgMs
+CAIbKC0AAAoqcikBAHBzLgAACnomAhwDKCwAAAoqWgMsCAIcKC0AAAoqcikBAHBzLgAACno6Ah0D
+jCsAAAEoLAAACipaAywIAh0oLQAACipyKQEAcHMuAAAKejoCHgOMKwAAASgsAAAKKloDLAgCHigt
+AAAKKnIpAQBwcy4AAAp6PgIfCQOMKwAAASgsAAAKKl4DLAkCHwkoLQAACipyKQEAcHMuAAAKeioC
+HwoDKCwAAAoqXgMsCQIfCigtAAAKKnIpAQBwcy4AAAp6KgIfCwMoLAAACipeAywJAh8LKC0AAAoq
+cikBAHBzLgAACno+Ah8MA4wrAAABKCwAAAoqXgMsCQIfDCgtAAAKKnIpAQBwcy4AAAp6KgIfDQMo
+LAAACipeAywJAh8NKC0AAAoqcikBAHBzLgAACnoqAh8OAygsAAAKKl4DLAkCHw4oLQAACipyKQEA
+cHMuAAAKej4CHw8DjCsAAAEoLAAACipeAywJAh8PKC0AAAoqcikBAHBzLgAACno+Ah8QA4wsAAAB
+KCwAAAoqXgMsCQIfECgtAAAKKnIpAQBwcy4AAAp6PgIfEQOMKwAAASgsAAAKKl4DLAkCHxEoLQAA
+CipyKQEAcHMuAAAKej4CHxIDjCsAAAEoLAAACipeAywJAh8SKC0AAAoqcikBAHBzLgAACno+Ah8T
+A4wrAAABKCwAAAoqXgMsCQIfEygtAAAKKnIpAQBwcy4AAAp6KgIfFAMoLAAACipeAywJAh8UKC0A
+AAoqcikBAHBzLgAACno+Ah8VA4wrAAABKCwAAAoqXgMsCQIfFSgtAAAKKnIpAQBwcy4AAAp6KgIf
+FgMoLAAACipeAywJAh8WKC0AAAoqcikBAHBzLgAACnoqAh8XAygsAAAKKl4DLAkCHxcoLQAACipy
+KQEAcHMuAAAKeioCHxgDKCwAAAoqXgMsCQIfGCgtAAAKKnIpAQBwcy4AAAp6PgIfGQOMKwAAASgs
+AAAKKl4DLAkCHxkoLQAACipyKQEAcHMuAAAKej4CHxoDjCsAAAEoLAAACipeAywJAh8aKC0AAAoq
+cikBAHBzLgAACno+Ah8bA4wrAAABKCwAAAoqXgMsCQIfGygtAAAKKnIpAQBwcy4AAAp6PgIfHAOM
+KwAAASgsAAAKKl4DLAkCHxwoLQAACipyKQEAcHMuAAAKej4CHx0DjCsAAAEoLAAACipeAywJAh8d
+KC0AAAoqcikBAHBzLgAACno+Ah8eA4wrAAABKCwAAAoqXgMsCQIfHigtAAAKKnIpAQBwcy4AAAp6
+PgIfHwOMKwAAASgsAAAKKl4DLAkCHx8oLQAACipyKQEAcHMuAAAKej4CHyADjCsAAAEoLAAACipe
+AywJAh8gKC0AAAoqcikBAHBzLgAACno+Ah8hA4wrAAABKCwAAAoqXgMsCQIfISgtAAAKKnIpAQBw
+cy4AAAp6KgIfIgMoLAAACipeAywJAh8iKC0AAAoqcikBAHBzLgAACno+Ah8jA4wsAAABKCwAAAoq
+XgMsCQIfIygtAAAKKnIpAQBwcy4AAAp6PgIfJAOMDwAAASgsAAAKKl4DLAkCHyQoLQAACipyKQEA
+cHMuAAAKeioCHyUDKCwAAAoqXgMsCQIfJSgtAAAKKnIpAQBwcy4AAAp6PgIfJgOMKwAAASgsAAAK
+Kl4DLAkCHyYoLQAACipyKQEAcHMuAAAKej4CHycDjCsAAAEoLAAACipeAywJAh8nKC0AAAoqcikB
+AHBzLgAACnoqAh8oAygsAAAKKl4DLAkCHygoLQAACipyKQEAcHMuAAAKeioCHykDKCwAAAoqXgMs
+CQIfKSgtAAAKKnIpAQBwcy4AAAp6KgIfKgMoLAAACipeAywJAh8qKC0AAAoqcikBAHBzLgAACno+
+Ah8rA4wrAAABKCwAAAoqXgMsCQIfKygtAAAKKnIpAQBwcy4AAAp6HgIoLwAACioeAigwAAAKKh4C
+KDEAAAoqfgIoMgAACgICc2YAAAZ9AQAABAICc2cAAAZ9AgAABCoGKm4CewMAAAQsEgJ7AwAABG9f
+AAAGAhR9AwAABCoTMAUASQAAAAIAABEWCisuBAaUDgRyxgEAcCgzAAAKMxkCBQaaAgQGlCg0AAAK
+DgRzBQAABn0DAAAEBhdYCgYDMs4Cb2UAAAYCb2IAAAYCKGMAAAYqOgIoNQAACgIDfQQAAAQqOgIo
+NQAACgIDfQUAAAQqlgJ7BQAABG82AAAKctQBAHBvNwAACig4AAAKbzkAAAp0IQAAASoeAig1AAAK
+Kq5+BgAABC0ecuIBAHDQBwAAAig6AAAKbzsAAApzPAAACoAGAAAEfgYAAAQqGn4HAAAEKh4CgAcA
+AAQqGn4IAAAEKh4CKD0AAAoqLnNuAAAGgAgAAAQqHgJ7CQAABCoiAgN9CQAABCoeAnsKAAAEKiIC
+A30KAAAEKh4CewsAAAQqIgIDfQsAAAQqHgJ7DAAABCoiAgN9DAAABCoeAnsNAAAEKiICA30NAAAE
+Kh4Cew4AAAQqIgIDfQ4AAAQqHgJ7DwAABCoiAgN9DwAABCoeAnsQAAAEKiICA30QAAAEKh4CexEA
+AAQqIgIDfREAAAQqHgJ7EgAABCoiAgN9EgAABCoeAnsTAAAEKiICA30TAAAEKh4CexQAAAQqIgID
+fRQAAAQqHgJ7FQAABCoiAgN9FQAABCoeAnsWAAAEKiICA30WAAAEKh4CexcAAAQqIgIDfRcAAAQq
+HgJ7GAAABCoiAgN9GAAABCoeAnsZAAAEKiICA30ZAAAEKh4CexoAAAQqIgIDfRoAAAQqHgJ7GwAA
+BCoiAgN9GwAABCoeAnscAAAEKiICA30cAAAEKh4Cex0AAAQqIgIDfR0AAAQqHgJ7HgAABCoiAgN9
+HgAABCoeAnsfAAAEKiICA30fAAAEKh4CeyAAAAQqIgIDfSAAAAQqHgJ7IQAABCoiAgN9IQAABCoe
+AnsiAAAEKiICA30iAAAEKh4CeyMAAAQqIgIDfSMAAAQqHgJ7JAAABCoiAgN9JAAABCoeAnslAAAE
+KiICA30lAAAEKh4CeyYAAAQqIgIDfSYAAAQqHgJ7JwAABCoiAgN9JwAABCoeAnsoAAAEKiICA30o
+AAAEKh4CeykAAAQqIgIDfSkAAAQqHgJ7KgAABCoiAgN9KgAABCoeAnsrAAAEKiICA30rAAAEKh4C
+eywAAAQqIgIDfSwAAAQqHgJ7LQAABCoiAgN9LQAABCoeAnsuAAAEKiICA30uAAAEKh4Cey8AAAQq
+IgIDfS8AAAQqHgJ7MAAABCoiAgN9MAAABCoeAnsxAAAEKiICA30xAAAEKh4CezIAAAQqIgIDfTIA
+AAQqHgJ7MwAABCoiAgN9MwAABCoeAns0AAAEKiICA300AAAEKh4CezUAAAQqIgIDfTUAAAQqHgJ7
+NgAABCoiAgN9NgAABCoeAns3AAAEKiICA303AAAEKh4CezgAAAQqIgIDfTgAAAQqHgJ7OQAABCoi
+AgN9OQAABCoeAns6AAAEKiICA306AAAEKjICIDB1AAAo2wAABio6Aig+AAAKAgMo3gAABiqWAgMo
+PwAACiUCKN0AAAZvQAAACiV0NAAAAQIo3QAABm9BAAAKKh4CezsAAAQqIgIDfTsAAAQqQlNKQgEA
+AQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA+CEAACN+AABkIgAAaBwAACNTdHJpbmdzAAAA
+AMw+AABUAgAAI1VTACBBAAAQAAAAI0dVSUQAAAAwQQAAVAMAACNCbG9iAAAAAAAAAAIAAAFXFaIJ
+CQsAAAD6ATMAFgAAAQAAADQAAAAPAAAAOwAAAN4AAACXAAAAQQAAAKkAAAACAAAACwAAAI8AAADD
+AAAAAwAAAAEAAAAHAAAAAQAAAAcAAAACAAAAAABoDQEAAAAAAAYAjgvaFgYAIgzaFgYA2grHFg8A
+ThcAAAYABwv9EwYAcQv9EwYAUgv9EwYACQz9EwYArgv9EwYAxwv9EwYAHgv9EwYAOQvIDAoA4gsP
+CQYAUwByEgYAnghyEgYASBRyEgYApxlyEgYAograFg4AYRr3GQ4AChv3GQ4ASg1yEgoAJhUPCRIA
+FxUPCQoAbhQPCQoAiRoPCQYAvQrHFgYARBX6FgYAUhTIEw4AIgpSDQ4A7gpSDQ4AAQqzEwYATxxy
+EgYA5QxyEg4ADxT3GQ4ABRX3GQYAXQGuDAYAIxRyEhYA9xXdEwYAvwx3GxoAAQC9FQYAwAByEgYA
+OBRyEgYAXgByEgYAqBJyEh4AKgCVFR4AGgCVFWcAtRsAAB4AOwCVFQYAMAlyEgYAMQhyEgYAWRz9
+Ew4A+Br3GQAAAADPAAAAAAABAAEAAQAQAAETAAAQAAEAAQABABAAMxUAAFkAAQAFAAEAEABrGgAA
+ZQABAGEAAQAQAEAYAABFAAQAZgABABAAmBcAAEUABQBnAAAAEAABF10XRQAGAGkAAAEQAMcXXRd9
+AAgAbQACABAAGQoAAEUACQBwAAIAEADmFQAARQALAHUAAgAQACoWAABFAB8AngACABAATBgAAEUA
+JgCtAAIAEABUFQAARQAxAMQAAgAQAGQAAABFADkA1QACABAAWhoAAE0AOwDaAAYAQBg5AQYAmBc9
+AQYAMxVBAQEAeRpFAQEAeRpFAREAnBJJAREA8QlNAREA4AdRAQEA2wZVAQEATQZYAQEAIgNdAQEA
+hQZgAQEAFQVgAQEAnQZgAQEAugZgAQEAiANgAQEA+ANgAQEASwRjAQEAZwZjAQEAagVjAQEATgVg
+AQEAygVqAQEALwZuAQEAvgNyAQEAngNgAQEAEwdVAQEANgNVAQEAZQRgAQEAeQJ6AQEA+QJjAQEA
+/wVgAQEA2wJjAQEADgRgAQEAKQRgAQEAMgVVAQEAkAJ+AQEAFQZjAQEAqwJjAQEAmQWFAQEAswVj
+AQEAqwRjAQEAewRjAQEAfwVjAQEA2wNjAQEAbQNjAQEA3ARjAQEA8QZgAQEAxwR+AQEAwgJjAQEA
++ANgAQEAlQRjAQEA5AVgAQEANQdgAQEAUgNgAQEAawdjAQEAhwdjAQEAZQRgAQEA/QRgAQEAUgdV
+AVAgAAAAAMYAQAwGAAEAWCAAAAAAxgBLDAYAAQBgIAAAAADGAHoZBgABALAtAAAAAIYYsBYGAAEA
+uC0AAAAAhhiwFsUAAQDDLQAAAACGCGQCiQEEANItAAAAAIYILg6OAQUA6S0AAAAAhgglGRAABgDz
+LQAAAACGCFwRjgEHAAouAAAAAIYIUhMQAAgAFC4AAAAAhghXEI4BCQArLgAAAACGCFgZEAAKADUu
+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
+gxvVAZEAlTgAAAAAhgiSG90BkQCeOAAAAACGCA0c1QGSAKY4AAAAAIYIHRzdAZIAITUAAAAAhhiw
+FgYAkwCvOAAAAACGCHkKaACTALc4AAAAAIYIggoQAJMAwDgAAAAAhggcE2gAlADIOAAAAACGCCcT
+EACUACE1AAAAAIYYsBYGAJUA0TgAAAAAhhiwFgYAlQDeOAAAAACGGLAWAQCVAO04AAAAAMQABxsX
+AZYAEzkAAAAAhgg2G44AlwAbOQAAAACGCEIbAQCXAAAAAQA5FQAAAgCiFwAAAwB8FAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQDyGAAAAgC9FgAAAwCYGAAABAB8FAAAAQCPGgAAAQCPGgAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAA
+AQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBuDAAAAQBu
+DAAAAQBuDAAAAQBjGwAAAQBODQAAAQBuDAkAsBYBABEAsBYGABkAsBYKACkAsBYQADEAsBYQADkA
+sBYQAEEAsBYQAEkAsBYQAFEAsBYQAFkAsBYQAGEAsBYQAGkAsBYGAJEAsBYGANEAsBYGAPEAsBYV
+AMkAQAwGAMkASwwGAAEBYhw8AAkBoBlHAJkAjBhOAAkBoBlUABEBZAFaAJkA+gBiAIEAJQhoAAkB
+IRhsACEB/xRxACkBsBYQADEBsBYGADEBOA0BADkBxgB2ADkB4gx8ADEBdAyCAAkBLQ2OAAkB7AyS
+AAwAYQyeAAwAVwyiABQAYQyeABQAVwyiABwAYQyeABwAVwyiAMkA5AC0AEEBDBa6ALEAsBbFALEA
+aRLPALEAWBIBAFEBsBYQALEABhwGALEAPxoGALEAQhqeAMkAsBYGAMkA2ADZAMkAthfgAIkAsBYG
+AMkAjBfmAGkBYBLsAMkA0BvzAHEBoRv5AIkBQwgAAYkBVRwJAdkAsBYPAfkAsBYGAJkAsBYGAJkA
+BxsXAaEAQhsBAKEBThsBAC4ACwCNAi4AEwCWAi4AGwC1Ai4AIwC+Ai4AKwDnAi4AMwDnAi4AOwDn
+Ai4AQwC+Ai4ASwDtAi4AUwDnAi4AWwAEA0MAYwBOA+MAcwBOAwEBawBOAyEBawBOA0EBawBOA2EB
+awBOA4EBawBOA6EBawBOA8EBawBOA+EBawBOAwECawBOAyECawBOA0ECawBOA2ECawBOA4ECawBO
+A6ECawBOA8ECawBOA+ECawBOAwEDawBOAyEDawBOA0EDawBOA2EDawBOA4EDawBOA6EDawBOA8ED
+awBOA+EDawBOAwEEawBOAyEEawBOA0EEawBOA2EEawBOA4EEawBOA6EEawBOA8EEawBOA+EEawBO
+AwEFawBOAyEFawBOA0EFawBOA2EFawBOA4EFawBOA6EFawBOA8EFawBOA+EFawBOAwEGawBOAyEG
+awBOA0EGawBOA2EGawBOA4EGawBOA6EGawBOA8EGawBOA+EGawBOAwEHawBOAyEHawBOA0EHawBO
+A2EHawBOA0kLewC1AmkLewC1AgAOawBOAyAOawBOA0AOawBOA2AOawBOA6AOawBOA8AOawBOA+AO
+awBOAwAPawBOAyAPawBOA0APawBOA2APawBOA4APawBOA6APawBOA8APawBOA+APawBOAwAQawBO
+AyAQawBOA0AQawBOA2AQawBOA4AQawBOA6AQawBOA8AQawBOA+AQawBOAwARawBOAyARawBOA0AR
+awBOA2ARawBOA4ARawBOA6ARawBOA8ARawBOA+ARawBOAwASawBOAyASawBOA0ASawBOA2ASawBO
+A4ASawBOA6ASawBOA8ASawBOA+ASawBOAwATawBOAyATawBOA0ATawBOA2ATawBOA4ATawBOA8AT
+awBOA+ATawBOAwAUawBOAyAUawBOA0AUawBOA2AUawBOA4AUawBOA6AUawBOA8AUawBOA+AUawBO
+AwAVawBOAyAVawBOA0AVawBOA2AVawBOA6AVawBOA8AVawBOA+AVawBOAwAWawBOAyAWawBOA0AW
+awBOA2AWawBOA4AWawBOA6AWawBOA8AWawBOA+AWawBOAwAXawBOAyAXawBOA0AXawBOA2AXawBO
+A4AXawBOA6AXawBOA8AXawBOA+AXawBOAwAYawBOAyAYawBOA0AYawBOA4AYawBOA6AYawBOA8AY
+awBOA+AYawBOAwAZawBOAyAZawBOA0AZawBOA2AZawBOA4AZawBOA6AZawBOA8AZawBOA+AZawBO
+AwAaawBOAyAaawBOA0AaawBOA2AaawBOA6AaawBOA8AaawBOA+AaawBOAwAbawBOA6AbawBOA8Ab
+awBOAxsA1QADAAEABgBZAAcAWgAIAFwACQBdAAoAXwALAHMADAB6AA0AhQAOAI0ADwCPAAAAdgI2
+AgAARw46AgAAcxk+AgAAkBE6AgAAVhM+AgAAWxA6AgAAXBk+AgAAchE6AgAAaxk+AgAAiBE6AgAA
+mQg+AgAAtA46AgAA1Ak+AgAAWw86AgAASApCAgAAaw86AgAA4BhCAgAASRE6AgAAahRCAgAApBA6
+AgAAqBM+AgAAjhA6AgAA5hc+AgAAFhE6AgAAugFCAgAAzA06AgAAkQk+AgAACg86AgAAwgk+AgAA
+SQ86AgAAgxNCAgAAcRA6AgAArwA6AgAAlA06AgAAERhCAgAALhE6AgAATAFCAgAAsA06AgAA0gFC
+AgAA6w06AgAApgk+AgAAJg86AgAAlgxCAgAAwg86AgAAkxY+AgAA7hA6AgAA2ho+AgAA4hE6AgAA
+xAc+AgAAVQ46AgAA6RtCAgAACxI6AgAAMRxCAgAAMxI6AgAAYhZCAgAA0hA6AgAAGA1CAgAA5Q86
+AgAAjwpCAgAApA86AgAApBRCAgAAsxA6AgAA+ghCAgAA2g46AgAAEAhCAgAAfA46AgAA3BJCAgAA
+HxA6AgAA3Bk+AgAAohE6AgAAjRI6AgAABRA6AgAAywhGAgAAxA46AgAAkQg+AgAArA46AgAAMBpC
+AgAAyBE6AgAAbwJCAgAAQA46AgAAnQo+AgAAsg86AgAAVQo+AgAAfw86AgAAEBM+AgAARBA6AgAA
+KQJCAgAAEQ46AgAA+hI+AgAARBVLAgAA+QlQAgAAUhpVAgAAmxlCAgAAsRhaAgAAdgI2AgAAcxk+
+AgAARhM+AgAADhk+AgAASBk+AgAAmQg+AgAA1Ak+AgAASApgAgAAzxhgAgAAahRgAgAAqBM+AgAA
+VRZoAgAAfxhtAgAAuwhyAgAAbAg+AgAAGxpCAgAAUgJCAgAAnQo+AgAAiQB7AgAADQJgAgAA7hc+
+AgAAkQFgAgAARwk+AgAAagk+AgAAdBNCAgAAoQCAAgAABBhgAgAAVwFgAgAAjBWIAgAAbRZgAgAA
+CQ1gAgAAcApgAgAArxRgAgAA6ghgAgAAGwhgAgAAyBJgAgAAxxk+AgAAmBKAAgAA5QFgAgAA1Ak+
+AgAAqQxgAgAAphY+AgAAyho+AgAAtgc+AgAAlhtgAgAAIRxgAgAAnQo+AgAAKxM+AgAAWxtCAgEA
+BgADAAEABwAFAAEACAAHAAEACQAJAAEACgALAAEACwANAAEADAAPAAEADQARAAEADgATAAEADwAV
+AAEAEAAXAAEAEQAZAAEAEgAbAAEAEwAdAAEAFAAfAAEAFQAhAAEAFgAjAAEAFwAlAAEAGAAnAAEA
+GQApAAEAGgArAAEAGwAtAAEAHAAvAAEAHQAxAAEAHgAzAAEAHwA1AAEAIAA3AAEAIQA5AAEAIgA7
+AAEAIwA9AAEAJAA/AAEAJQBBAAEAJgBDAAEAJwBFAAEAKABHAAEAKQBJAAEAKgBLAAEAKwBNAAEA
+LABPAAEALQBRAAEALgBTAAEALwBVAAEAMABXAAEAMQBZAAEAMgBbAAEAMwBdAAEANABfAAEANQBh
+AAEANgBjAAEANwBlAAEAOABnAAEAOQBpAAEAOgBrAAEAOwBtAAEAPABvAAEAPQBxAAEAPgBzAAEA
+PwB1AAEAQAB3AAEAQQB5AAEAQgB7AAEAQwB9AAEARAB/AAEARQCBAAEARgCDAAEARwCFAAEASACH
+AAEASQCJAAEASgCLAAEASwCNAAEATACPAAEATQCRAAEATgCTAAEATwCVAAEAUACXAAEAUQCZAAEA
+UgCbAAEAUwCdAAEAVACfAAEAVQChAAEAVgCjAAEAVwClAAEAWACnAAEAWQCpAAEAWgCrAAEAWwCt
+AAEAXACvAAEAXQCxAAIAaACzAAIAagC1AAIAawC3AAEAbAC3AAIAbQC5AAIAcAC7AAEAcQC7AAIA
+cgC9AAEAcwC9AAIAdQC/AAEAdgC/AAIAdwDBAAEAeADBAAIAeQDDAAEAegDDAAIAewDFAAEAfADF
+AAIAfQDHAAEAfgDHAAIAfwDJAAEAgADJAAIAgQDLAAEAggDLAAIAgwDNAAEAhADNAAIAhQDPAAEA
+hgDPAAIAhwDRAAEAiADRAAIAiQDTAAEAigDTAAIAiwDVAAEAjADVAAIAjQDXAAEAjgDXAAIAjwDZ
+AAEAkADZAAIAkQDbAAEAkgDbAAIAkwDdAAEAlADdAAIAlQDfAAEAlgDfAAIAlwDhAAEAmADhAAIA
+mQDjAAEAmgDjAAIAmwDlAAEAnADlAAIAngDnAAEAnwDnAAIAoADpAAEAoQDpAAIAogDrAAEAowDr
+AAIApADtAAEApQDtAAIApgDvAAEApwDvAAIAqADxAAEAqQDxAAIAqgDzAAEAqwDzAAIArQD1AAEA
+rgD1AAIArwD3AAEAsAD3AAIAsQD5AAEAsgD5AAIAswD7AAEAtAD7AAIAtQD9AAEAtgD9AAIAtwD/
+AAEAuAD/AAIAuQABAQEAugABAQIAuwADAQEAvAADAQIAvQAFAQEAvgAFAQIAvwAHAQEAwAAHAQIA
+wQAJAQEAwgAJAQIAxAALAQEAxQALAQIAxgANAQEAxwANAQIAyAAPAQEAyQAPAQIAygARAQEAywAR
+AQIAzAATAQEAzQATAQIAzgAVAQEAzwAVAQIA0AAXAQEA0QAXAQIA0gAZAQEA0wAZAQIA1QAbAQEA
+1gAbAQIA1wAdAQEA2AAdAQIA3QAfAQEA3gAfAZgApwCtAASAAAABAAAAAAAAAAAAAAAAAAcBAAAE
+AAAAAAAAAAAAAAAeASsBAAAAAA8AAAAAAAAAAAAAACcBmRoAAAAABAAAAAAAAAAAAAAAHgFyEgAA
+AAAPAAAAAAAAAAAAAAAnARUbAAAAAAQAAAAAAAAAAAAAADABKhgAAAAADwAAAAAAAAAAAAAAJwHb
+FAAAAAAPAAAAAAAAAAAAAAAnAbgUAAAAAAAAAAABAAAACxcAAAkAAgAKAAIACwACAAwAAgANAAIA
+DgACAA8AAgAlAEMAQQCJAAAAAAAASURUU0NvbXBvbmVudE1ldGFEYXRhMTAwAElEVFNWYXJpYWJs
+ZTEwMABJRFRTVmFyaWFibGVzMTAwAElEVFNFdmFsdWF0b3JDb250ZXh0MTAwAE51bGxhYmxlYDEA
+SW50MzIAUmVzcG9uc2VfQ291bnRlcl9zaXRlMgBnZXRfc2l0ZTIAc2V0X3NpdGUyAGdldF9hbGxv
+d193djIAc2V0X2FsbG93X3d2MgBzZXRfd2Vidmlzb3JhbGxvd3d2MgBJbnQ2NABnZXRfVVRGOAA8
+TW9kdWxlPgBHZXRPdXRwdXRJRABnZXRfQ29tcG9uZW50TWV0YURhdGEARG93bmxvYWREYXRhAFND
+XzVjMDA3MjE1MTRkNDQwYWVhMDM1MzcyZDk0ZDYyYWFiAG1zY29ybGliAGdldF9hc3luYwBzZXRf
+YXN5bmMAc2V0X2NvZGVvcHRpb25zYXN5bmMAVGhyZWFkAEFkZABNYXJrT3V0cHV0c0ZpbmlzaGVk
+AGdldF9hcmNoX2VuYWJsZWQAc2V0X2FyY2hfZW5hYmxlZABnZXRfZW5hYmxlZABzZXRfZW5hYmxl
+ZABzZXRfd2Vidmlzb3JhcmNoZW5hYmxlZABzZXRfY29kZW9wdGlvbnNpbmZvcm1lcmVuYWJsZWQA
+Z2V0X2dkcHJfYWdyZWVtZW50X2FjY2VwdGVkAHNldF9nZHByX2FncmVlbWVudF9hY2NlcHRlZABz
+ZXRfZ2RwcmFncmVlbWVudGFjY2VwdGVkAGdldF9wYXJ0bmVyX2lkAHNldF9wYXJ0bmVyX2lkAGdl
+dF9pZABzZXRfaWQAc2V0X3BhcnRuZXJpZAA8c2l0ZTI+a19fQmFja2luZ0ZpZWxkADxhbGxvd193
+djI+a19fQmFja2luZ0ZpZWxkADxhc3luYz5rX19CYWNraW5nRmllbGQAPGVuYWJsZWQ+a19fQmFj
+a2luZ0ZpZWxkADxhcmNoX2VuYWJsZWQ+a19fQmFja2luZ0ZpZWxkADxnZHByX2FncmVlbWVudF9h
+Y2NlcHRlZD5rX19CYWNraW5nRmllbGQAPGlkPmtfX0JhY2tpbmdGaWVsZAA8cGFydG5lcl9pZD5r
+X19CYWNraW5nRmllbGQAPGNvbG9yX2VuZD5rX19CYWNraW5nRmllbGQAPGVjb21tZXJjZT5rX19C
+YWNraW5nRmllbGQAPG5hbWU+a19fQmFja2luZ0ZpZWxkADx0aW1lX3pvbmVfbmFtZT5rX19CYWNr
+aW5nRmllbGQAPGNyZWF0ZV90aW1lPmtfX0JhY2tpbmdGaWVsZAA8aW5fb25lX2xpbmU+a19fQmFj
+a2luZ0ZpZWxkADx0eXBlPmtfX0JhY2tpbmdGaWVsZAA8YXJjaF90eXBlPmtfX0JhY2tpbmdGaWVs
+ZAA8bG9hZF9wbGF5ZXJfdHlwZT5rX19CYWNraW5nRmllbGQAPGZhdm9yaXRlPmtfX0JhY2tpbmdG
+aWVsZAA8c2l0ZT5rX19CYWNraW5nRmllbGQAPHhtbF9zaXRlPmtfX0JhY2tpbmdGaWVsZAA8c2l6
+ZT5rX19CYWNraW5nRmllbGQAPHRyYWNrX2hhc2g+a19fQmFja2luZ0ZpZWxkADx5dG0+a19fQmFj
+a2luZ0ZpZWxkADxhbHRlcm5hdGl2ZV9jZG4+a19fQmFja2luZ0ZpZWxkADxkb21haW4+a19fQmFj
+a2luZ0ZpZWxkADxvd25lcl9sb2dpbj5rX19CYWNraW5nRmllbGQAPHd2X3ZlcnNpb24+a19fQmFj
+a2luZ0ZpZWxkADxwZXJtaXNzaW9uPmtfX0JhY2tpbmdGaWVsZAA8cHJvPmtfX0JhY2tpbmdGaWVs
+ZAA8Y2xpY2ttYXA+a19fQmFja2luZ0ZpZWxkADxpbmZvcm1lcj5rX19CYWNraW5nRmllbGQAPHZp
+c29yPmtfX0JhY2tpbmdGaWVsZAA8d2Vidmlzb3I+a19fQmFja2luZ0ZpZWxkADxpbmRpY2F0b3I+
+a19fQmFja2luZ0ZpZWxkADx1cmxzPmtfX0JhY2tpbmdGaWVsZAA8d3ZfZm9ybXM+a19fQmFja2lu
+Z0ZpZWxkADxjb2RlX29wdGlvbnM+a19fQmFja2luZ0ZpZWxkADxjb3VudGVycz5rX19CYWNraW5n
+RmllbGQAPGhpZGVfYWRkcmVzcz5rX19CYWNraW5nRmllbGQAPHN0YXR1cz5rX19CYWNraW5nRmll
+bGQAPGNvZGVfc3RhdHVzPmtfX0JhY2tpbmdGaWVsZAA8YWN0aXZpdHlfc3RhdHVzPmtfX0JhY2tp
+bmdGaWVsZAA8cm93cz5rX19CYWNraW5nRmllbGQAPGVjb21tZXJjZV9vYmplY3Q+a19fQmFja2lu
+Z0ZpZWxkADx0aW1lX3pvbmVfb2Zmc2V0PmtfX0JhY2tpbmdGaWVsZAA8Y29sb3Jfc3RhcnQ+a19f
+QmFja2luZ0ZpZWxkADxUaW1lb3V0PmtfX0JhY2tpbmdGaWVsZAA8Y29sb3JfdGV4dD5rX19CYWNr
+aW5nRmllbGQAPGNvbG9yX2Fycm93PmtfX0JhY2tpbmdGaWVsZABnZXRfY29sb3JfZW5kAHNldF9j
+b2xvcl9lbmQAc2V0X2NvZGVvcHRpb25zaW5mb3JtZXJjb2xvcmVuZABkZWZhdWx0SW5zdGFuY2UA
+Z2V0X2Vjb21tZXJjZQBzZXRfZWNvbW1lcmNlAHNldF9jb2Rlb3B0aW9uc2Vjb21tZXJjZQBnZXRf
+TWVzc2FnZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBnZXRfdGltZV96b25l
+X25hbWUAc2V0X3RpbWVfem9uZV9uYW1lAGdldF9uYW1lAHNldF9uYW1lAHNldF90aW1lem9uZW5h
+bWUARGF0ZVRpbWUAZ2V0X2NyZWF0ZV90aW1lAHNldF9jcmVhdGVfdGltZQBzZXRfY3JlYXRldGlt
+ZQBnZXRfaW5fb25lX2xpbmUAc2V0X2luX29uZV9saW5lAHNldF9jb2Rlb3B0aW9uc2lub25lbGlu
+ZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBUeXBlAGdldF9hcmNoX3R5cGUAc2V0
+X2FyY2hfdHlwZQBnZXRfbG9hZF9wbGF5ZXJfdHlwZQBzZXRfbG9hZF9wbGF5ZXJfdHlwZQBnZXRf
+dHlwZQBzZXRfdHlwZQBzZXRfd2Vidmlzb3JhcmNodHlwZQBzZXRfY29kZW9wdGlvbnNpbmZvcm1l
+cnR5cGUAc2V0X3dlYnZpc29ybG9hZHBsYXllcnR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUA
+cmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAFJlc3BvbnNlAEVkaXRvckJy
+b3dzYWJsZVN0YXRlAGdldF9mYXZvcml0ZQBzZXRfZmF2b3JpdGUAc2V0X3NpdGUyc2l0ZQBnZXRf
+eG1sX3NpdGUAc2V0X3htbF9zaXRlAGdldF9zaXRlAHNldF9zaXRlAHNldF9jb2Rlb3B0aW9uc3ht
+bHNpdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJp
+YnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJs
+eVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29y
+a0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlw
+dGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJv
+ZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9u
+ZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNv
+bXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQBnZXRfVmFsdWUAZ2V0
+X0hhc1ZhbHVlAHZhbHVlAERlc2VyaWFsaXplAGdldF9zaXplAHNldF9zaXplAHNldF9jb2Rlb3B0
+aW9uc2luZm9ybWVyc2l6ZQBTeXN0ZW0uVGhyZWFkaW5nAEVuY29kaW5nAFN5c3RlbS5SdW50aW1l
+LlZlcnNpb25pbmcAR2V0U3RyaW5nAFN1YnN0cmluZwBnZXRfdHJhY2tfaGFzaABzZXRfdHJhY2tf
+aGFzaABzZXRfY29kZW9wdGlvbnN0cmFja2hhc2gAZ2V0X0xlbmd0aABzZXRfTWF4SnNvbkxlbmd0
+aABVcmkAdXJpAFN5c3RlbS5Db21wb25lbnRNb2RlbABTQ181YzAwNzIxNTE0ZDQ0MGFlYTAzNTM3
+MmQ5NGQ2MmFhYi5kbGwAc2V0X3dlYnZpc29yYWxsb3d3djJfSXNOdWxsAHNldF9jb2Rlb3B0aW9u
+c2FzeW5jX0lzTnVsbABzZXRfd2Vidmlzb3JhcmNoZW5hYmxlZF9Jc051bGwAc2V0X2NvZGVvcHRp
+b25zaW5mb3JtZXJlbmFibGVkX0lzTnVsbABzZXRfZ2RwcmFncmVlbWVudGFjY2VwdGVkX0lzTnVs
+bABzZXRfaWRfSXNOdWxsAHNldF9wYXJ0bmVyaWRfSXNOdWxsAHNldF9jb2Rlb3B0aW9uc2luZm9y
+bWVyY29sb3JlbmRfSXNOdWxsAHNldF9jb2Rlb3B0aW9uc2Vjb21tZXJjZV9Jc051bGwAc2V0X25h
+bWVfSXNOdWxsAHNldF90aW1lem9uZW5hbWVfSXNOdWxsAHNldF9jcmVhdGV0aW1lX0lzTnVsbABz
+ZXRfY29kZW9wdGlvbnNpbm9uZWxpbmVfSXNOdWxsAHNldF90eXBlX0lzTnVsbABzZXRfd2Vidmlz
+b3JhcmNodHlwZV9Jc051bGwAc2V0X2NvZGVvcHRpb25zaW5mb3JtZXJ0eXBlX0lzTnVsbABzZXRf
+d2Vidmlzb3Jsb2FkcGxheWVydHlwZV9Jc051bGwAc2V0X2Zhdm9yaXRlX0lzTnVsbABzZXRfc2l0
+ZTJzaXRlX0lzTnVsbABzZXRfc2l0ZV9Jc051bGwAc2V0X2NvZGVvcHRpb25zeG1sc2l0ZV9Jc051
+bGwAc2V0X2NvZGVvcHRpb25zaW5mb3JtZXJzaXplX0lzTnVsbABzZXRfY29kZW9wdGlvbnN0cmFj
+a2hhc2hfSXNOdWxsAHNldF9jb2Rlb3B0aW9uc3l0bV9Jc051bGwAc2V0X2NvZGVvcHRpb25zYWx0
+ZXJuYXRpdmVjZG5fSXNOdWxsAHNldF9zaXRlMmRvbWFpbl9Jc051bGwAc2V0X293bmVybG9naW5f
+SXNOdWxsAHNldF93ZWJ2aXNvcnd2dmVyc2lvbl9Jc051bGwAc2V0X3Blcm1pc3Npb25fSXNOdWxs
+AHNldF9wcm9fSXNOdWxsAHNldF9jb2Rlb3B0aW9uc2NsaWNrbWFwX0lzTnVsbABzZXRfY29kZW9w
+dGlvbnN2aXNvcl9Jc051bGwAc2V0X2NvZGVvcHRpb25zaW5mb3JtZXJpbmRpY2F0b3JfSXNOdWxs
+AHNldF93ZWJ2aXNvcnVybHNfSXNOdWxsAHNldF93ZWJ2aXNvcnd2Zm9ybXNfSXNOdWxsAHNldF9o
+aWRlYWRkcmVzc19Jc051bGwAc2V0X3N0YXR1c19Jc051bGwAc2V0X2NvZGVzdGF0dXNfSXNOdWxs
+AHNldF9hY3Rpdml0eXN0YXR1c19Jc051bGwAc2V0X2NvZGVvcHRpb25zZWNvbW1lcmNlb2JqZWN0
+X0lzTnVsbABzZXRfdGltZXpvbmVvZmZzZXRfSXNOdWxsAHNldF9jb2Rlb3B0aW9uc2luZm9ybWVy
+Y29sb3JzdGFydF9Jc051bGwAc2V0X2NvZGVvcHRpb25zaW5mb3JtZXJjb2xvcnRleHRfSXNOdWxs
+AHNldF9jb2Rlb3B0aW9uc2luZm9ybWVyY29sb3JhcnJvd19Jc051bGwAU2V0TnVsbABnZXRfSXRl
+bQBzZXRfSXRlbQBTeXN0ZW0AZ2V0X3l0bQBzZXRfeXRtAHNldF9jb2Rlb3B0aW9uc3l0bQByZXNv
+dXJjZU1hbgBCb29sZWFuAGdldF9hbHRlcm5hdGl2ZV9jZG4Ac2V0X2FsdGVybmF0aXZlX2NkbgBz
+ZXRfY29kZW9wdGlvbnNhbHRlcm5hdGl2ZWNkbgBnZXRfcFRva2VuAFNjcmlwdE1haW4Ac2V0X3Np
+dGUyZG9tYWluAGdldF9kb21haW4Ac2V0X2RvbWFpbgBnZXRfb3duZXJfbG9naW4Ac2V0X293bmVy
+X2xvZ2luAHNldF9vd25lcmxvZ2luAGdldF93dl92ZXJzaW9uAHNldF93dl92ZXJzaW9uAHNldF93
+ZWJ2aXNvcnd2dmVyc2lvbgBnZXRfcGVybWlzc2lvbgBzZXRfcGVybWlzc2lvbgBTeXN0ZW0uQ29u
+ZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uV2ViLlNjcmlwdC5TZXJpYWxp
+emF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAFdlYkhlYWRlckNvbGxlY3Rpb24AQXBwbGljYXRpb25F
+eGNlcHRpb24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBDdWx0dXJlSW5mbwBnZXRfcHJvAHNl
+dF9wcm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAAZ2V0X2NsaWNrbWFwAHNldF9jbGlja21hcABz
+ZXRfY29kZW9wdGlvbnNjbGlja21hcABNaWNyb3NvZnQuU3FsU2VydmVyLkRUU1J1bnRpbWVXcmFw
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUGlwZWxpbmVXcmFwAFNsZWVwAEh0dHBSZXF1ZXN0SGVh
+ZGVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBPdXRwdXRCdWZmZXIAZ2V0X1Jlc291cmNl
+TWFuYWdlcgBSZXNwb25zZV9Db3VudGVyX2NvZGVfb3B0aW9uc19pbmZvcm1lcgBnZXRfaW5mb3Jt
+ZXIAc2V0X2luZm9ybWVyAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUuV3JhcHBlcgBN
+aWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZS5XcmFwcGVyAFJlc3BvbnNlX0NvdW50ZXIA
+SmF2YVNjcmlwdFNlcmlhbGl6ZXIARmlyZUVycm9yAGdldF92aXNvcgBzZXRfdmlzb3IAUmVzcG9u
+c2VfQ291bnRlcl9XZWJ2aXNvcgBnZXRfd2Vidmlzb3IAc2V0X3dlYnZpc29yAHNldF9jb2Rlb3B0
+aW9uc3Zpc29yAGdldF9pbmRpY2F0b3IAc2V0X2luZGljYXRvcgBzZXRfY29kZW9wdGlvbnNpbmZv
+cm1lcmluZGljYXRvcgAuY3RvcgAuY2N0b3IAT3V0cHV0SURzAFN5c3RlbS5EaWFnbm9zdGljcwBT
+eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfNWMwMDcy
+MTUxNGQ0NDBhZWEwMzUzNzJkOTRkNjJhYWIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2Vz
+AERlYnVnZ2luZ01vZGVzAFNDXzVjMDA3MjE1MTRkNDQwYWVhMDM1MzcyZDk0ZDYyYWFiLlByb3Bl
+cnRpZXMAZ2V0X1JlYWRPbmx5VmFyaWFibGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMAR2V0Q29sdW1u
+SW5kZXhlcwBTZXR0aW5ncwBnZXRfdXJscwBzZXRfdXJscwBzZXRfd2Vidmlzb3J1cmxzAGdldF93
+dl9mb3JtcwBzZXRfd3ZfZm9ybXMAc2V0X3dlYnZpc29yd3Zmb3JtcwBDb250YWlucwBTeXN0ZW0u
+V2ViLkV4dGVuc2lvbnMAQ29ubmVjdGlvbnMAUmVzcG9uc2VfQ291bnRlcl9jb2RlX29wdGlvbnMA
+Z2V0X2NvZGVfb3B0aW9ucwBzZXRfY29kZV9vcHRpb25zAGdldF9IZWFkZXJzAEJ1ZmZlcnMAZ2V0
+X2NvdW50ZXJzAHNldF9jb3VudGVycwBnZXRfaGlkZV9hZGRyZXNzAHNldF9oaWRlX2FkZHJlc3MA
+c2V0X2hpZGVhZGRyZXNzAEZpbmlzaE91dHB1dHMAZ2V0X2NvZGVfc3RhdHVzAHNldF9jb2RlX3N0
+YXR1cwBnZXRfc3RhdHVzAHNldF9zdGF0dXMAZ2V0X2FjdGl2aXR5X3N0YXR1cwBzZXRfYWN0aXZp
+dHlfc3RhdHVzAHNldF9jb2Rlc3RhdHVzAHNldF9hY3Rpdml0eXN0YXR1cwBDcmVhdGVOZXdPdXRw
+dXRSb3dzAGdldF9yb3dzAHNldF9yb3dzAEZvcm1hdABPYmplY3QAZ2V0X2Vjb21tZXJjZV9vYmpl
+Y3QAc2V0X2Vjb21tZXJjZV9vYmplY3QAc2V0X2NvZGVvcHRpb25zZWNvbW1lcmNlb2JqZWN0AFN5
+c3RlbS5OZXQAZ2V0X3RpbWVfem9uZV9vZmZzZXQAc2V0X3RpbWVfem9uZV9vZmZzZXQAc2V0X3Rp
+bWV6b25lb2Zmc2V0AFNldEVuZE9mUm93c2V0AGdldF9EZWZhdWx0AFRpbWVvdXRXZWJDbGllbnQA
+VXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5T
+cWxTZXJ2ZXIuVHhTY3JpcHQAZ2V0X2NvbG9yX3N0YXJ0AHNldF9jb2xvcl9zdGFydABzZXRfY29k
+ZW9wdGlvbnNpbmZvcm1lcmNvbG9yc3RhcnQASHR0cFdlYlJlcXVlc3QAR2V0V2ViUmVxdWVzdABN
+aWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABnZXRfVGltZW91dABzZXRfVGltZW91dABz
+ZXRfUmVhZFdyaXRlVGltZW91dAB0aW1lb3V0AFByaW1lT3V0cHV0AFN5c3RlbS5UZXh0AGdldF9j
+b2xvcl90ZXh0AHNldF9jb2xvcl90ZXh0AEdldFZhbHVlV2l0aENvbnRleHQAU2NyaXB0Q29tcG9u
+ZW50RXZhbENvbnRleHQAZ2V0X0V2YWx1YXRvckNvbnRleHQAc2V0X2NvZGVvcHRpb25zaW5mb3Jt
+ZXJjb2xvcnRleHQAQWRkUm93AGdldF9jb2xvcl9hcnJvdwBzZXRfY29sb3JfYXJyb3cAc2V0X2Nv
+ZGVvcHRpb25zaW5mb3JtZXJjb2xvcmFycm93AEFycmF5AGdldF9Bc3NlbWJseQBFbXB0eQAAa2gA
+dAB0AHAAcwA6AC8ALwBhAHAAaQAtAG0AZQB0AHIAaQBrAGEALgB5AGEAbgBkAGUAeAAuAG4AZQB0
+AC8AbQBhAG4AYQBnAGUAbQBlAG4AdAAvAHYAMQAvAGMAbwB1AG4AdABlAHIAcwABE08AQQB1AHQA
+aAAgAHsAMAB9AAAjVABvAG8AIABNAGEAbgB5ACAAUgBlAHEAdQBlAHMAdABzAAB5IQQ7BDgESAQ6
+BD4EPAQgADEEPgQ7BEwESAQ+BDUEIAA6BD4EOwQ4BEcENQRBBEIEMgQ+BCAAPgQxBEAEMARJBDUE
+PQQ4BDkEIAA6BCAAQQQ1BEAEMgQ1BEAEQwQgAFkAYQBuAGQAZQB4AE0AZQB0AHIAaQBjAGEAAQd7
+ADAAfQAAAQCAm0kAcwBOAHUAbABsACAAcAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABi
+AGUAIABzAGUAdAAgAHQAbwAgAEYAYQBsAHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwA
+dQBlACAAdABvACAAdABoAGUAIABjAG8AbAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAADU8AdQB0
+AHAAdQB0AAANcABUAG8AawBlAG4AAHFTAEMAXwA1AGMAMAAwADcAMgAxADUAMQA0AGQANAA0ADAA
+YQBlAGEAMAAzADUAMwA3ADIAZAA5ADQAZAA2ADIAYQBhAGIALgBQAHIAbwBwAGUAcgB0AGkAZQBz
+AC4AUgBlAHMAbwB1AHIAYwBlAHMAAD4LTklzDbdHv1VnjJ3kMnEABCABAQgDIAABBSABARERBCAB
+AQ4FIAEBEXUgBwwdBQ4IDh0SKAgSKBUROQEIFRE5AQIVETkBET0SQQIGEAEAHR4AAwoBHAYAAg4O
+HRwFIAASgIkFAAIODhwHIAIBEYCNDgUgAR0FDgMgAA4EIAECDgQAAQEIBQAAEoCdBSABDh0FBjAB
+AR4ADgQKARIkAyAACAUgAg4ICAUVETkBCAMgAAIEIAATAAUVETkBAgYVETkBET0FIAASgKEKIAYB
+CA4ODggQAgkgAwESXR0IEmEFIAIBCBwDBwEIBgACCBJhDgUgAR0ICAUgABKAtQYgARKAuRwFAAAS
+gL0GIAEcEoDBCAABEoDFEYDJBSAAEoDNByACAQ4SgM0GIAESURJVCLd6XFYZNOCJCImEXc2AgMyR
+CDG/OFatNk41AwYSFAMGEhgDBhIMAwYSZQMGEm0DBhJxAwYSIAIGCAQGHRIoAgYKAgYOBgYVETkB
+CAMGEiwDBhIwBwYVETkBET0DBhI4BgYVETkBAgMGEjQEIAEBCgQgAQECBSABARE9CyAEAQgdCB0S
+XRJhBSABARJlBAAAEm0EAAAScQUAAQEScQQAABIgAwAAAQUgAB0SKAYgAQEdEigDIAAKByAAFRE5
+AQgIIAEBFRE5AQgEIAASLAUgAQESLAQgABIwBSABARIwCCAAFRE5ARE9CSABARUROQERPQQgABI4
+BSABARI4ByAAFRE5AQIIIAEBFRE5AQIEIAASNAUgAQESNAMoAAoDKAACAygADgMoAAgEKAARPQQI
+ABJtBAgAEnEECAASIAUoAB0SKAcoABUROQEIBCgAEiwEKAASMAgoABUROQERPQQoABI4BygAFRE5
+AQIEKAASNAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAo
+AQAjU0NfNWMwMDcyMTUxNGQ0NDBhZWEwMzUzNzJkOTRkNjJhYWIAAAUBAAAAABYBABFDb3B5cmln
+aHQgQCAgMjAyNAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtE
+aXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjcEAQAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3Rl
+bS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVz
+b3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAiH4AAAAAAAAA
+AAAAon4AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJR+AAAAAAAAAAAAAAAAX0NvckRsbE1haW4A
+bXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAA
+AAAAAAAAAAAAAAAAAAEAAAAAAEgAAABYgAAA7AMAAAAAAAAAAAAA7AM0AAAAVgBTAF8AVgBFAFIA
+UwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAA
+AAIAAAAAAAAAAAAAAAAAAABEAAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQA
+cgBhAG4AcwBsAGEAdABpAG8AbgAAAAAAAACwBEwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBu
+AGYAbwAAACgDAAABADAAMAAwADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAA
+AAAiAAEAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBz
+AGMAcgBpAHAAdABpAG8AbgAAAAAAUwBDAF8ANQBjADAAMAA3ADIAMQA1ADEANABkADQANAAwAGEA
+ZQBhADAAMwA1ADMANwAyAGQAOQA0AGQANgAyAGEAYQBiAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBz
+AGkAbwBuAAAAAAAxAC4AMAAuADAALgAwAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA
+AABTAEMAXwA1AGMAMAAwADcAMgAxADUAMQA0AGQANAA0ADAAYQBlAGEAMAAzADUAMwA3ADIAZAA5
+ADQAZAA2ADIAYQBhAGIALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgA
+dAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIANAAAACoAAQABAEwAZQBnAGEAbABU
+AHIAYQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUA
+bgBhAG0AZQAAAFMAQwBfADUAYwAwADAANwAyADEANQAxADQAZAA0ADQAMABhAGUAYQAwADMANQAz
+ADcAMgBkADkANABkADYAMgBhAGEAYgAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEA
+bQBlAAAAAABTAEMAXwA1AGMAMAAwADcAMgAxADUAMQA0AGQANAA0ADAAYQBlAGEAMAAzADUAMwA3
+ADIAZAA5ADQAZAA2ADIAYQBhAGIAAAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAA
+ADEALgAwAC4AMAAuADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAcAAADAAAALQ+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAA==]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_5c00721514d440aea035372d94d62aab</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::pToken</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">4C</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Буфер\Источник.Outputs[Output]"
+                  hasSideEffects="true"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[id]"
+                      dataType="i8"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[status]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[owner_login]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[owner_login]"
+                      name="owner_login" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_status]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_status]"
+                      name="code_status" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[activity_status]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[activity_status]"
+                      name="activity_status" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[favorite]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[favorite]"
+                      name="favorite" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[hide_address]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[hide_address]"
+                      name="hide_address" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[pro]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[pro]"
+                      name="pro" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[permission]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[permission]"
+                      name="permission" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_urls]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_urls]"
+                      name="webvisor_urls" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_enabled]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_enabled]"
+                      name="webvisor_arch_enabled" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_type]"
+                      name="webvisor_arch_type" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_load_player_type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_load_player_type]"
+                      name="webvisor_load_player_type" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_version]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_version]"
+                      name="webvisor_wv_version" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_allow_wv2]"
+                      dataType="bool"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_allow_wv2]"
+                      name="webvisor_allow_wv2" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_forms]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_forms]"
+                      name="webvisor_wv_forms" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_async]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_async]"
+                      name="code_options_async" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_enabled]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_enabled]"
+                      name="code_options_informer_enabled" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_type]"
+                      name="code_options_informer_type" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_size]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_size]"
+                      name="code_options_informer_size" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_indicator]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_indicator]"
+                      name="code_options_informer_indicator" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_start]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_start]"
+                      name="code_options_informer_color_start" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_end]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_end]"
+                      name="code_options_informer_color_end" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_text]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_text]"
+                      name="code_options_informer_color_text" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_arrow]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_arrow]"
+                      name="code_options_informer_color_arrow" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_visor]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_visor]"
+                      name="code_options_visor" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_track_hash]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_track_hash]"
+                      name="code_options_track_hash" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_xml_site]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_xml_site]"
+                      name="code_options_xml_site" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_clickmap]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_clickmap]"
+                      name="code_options_clickmap" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_in_one_line]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_in_one_line]"
+                      name="code_options_in_one_line" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce]"
+                      name="code_options_ecommerce" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_alternative_cdn]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_alternative_cdn]"
+                      name="code_options_alternative_cdn" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce_object]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce_object]"
+                      name="code_options_ecommerce_object" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ytm]"
+                      dataType="bool"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ytm]"
+                      name="code_options_ytm" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[create_time]"
+                      dataType="date"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[create_time]"
+                      name="create_time" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_name]"
+                      name="time_zone_name" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_offset]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_offset]"
+                      name="time_zone_offset" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[partner_id]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[partner_id]"
+                      name="partner_id" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[site]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site]"
+                      name="site" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[site2_site]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site2_site]"
+                      name="site2_site" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[site2_domain]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site2_domain]"
+                      name="site2_domain" />
+                    <outputColumn
+                      refId="Package\Буфер\Источник.Outputs[Output].Columns[gdpr_agreement_accepted]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[gdpr_agreement_accepted]"
+                      name="gdpr_agreement_accepted" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Буфер\Приемник"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Приемник"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[BUFFER].[YandexMetric_Counters]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Буфер\Приемник.Connections[OleDbConnection]"
+                  connectionManagerID="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DWH_STAGE_COMMON]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[id]"
+                      cachedDataType="i8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[id]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[status]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[owner_login]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="owner_login"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[owner_login]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[owner_login]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_status]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_status"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_status]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_status]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[activity_status]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="activity_status"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[activity_status]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[activity_status]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[name]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[type]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[favorite]"
+                      cachedDataType="i4"
+                      cachedName="favorite"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[favorite]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[favorite]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hide_address]"
+                      cachedDataType="i4"
+                      cachedName="hide_address"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hide_address]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[hide_address]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[pro]"
+                      cachedDataType="i4"
+                      cachedName="pro"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[pro]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[pro]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[permission]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="permission"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[permission]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[permission]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_urls]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="webvisor_urls"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_urls]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_urls]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_arch_enabled]"
+                      cachedDataType="i4"
+                      cachedName="webvisor_arch_enabled"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_arch_enabled]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_enabled]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_arch_type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="webvisor_arch_type"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_arch_type]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_arch_type]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_load_player_type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="webvisor_load_player_type"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_load_player_type]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_load_player_type]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_wv_version]"
+                      cachedDataType="i4"
+                      cachedName="webvisor_wv_version"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_wv_version]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_version]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_allow_wv2]"
+                      cachedDataType="bool"
+                      cachedName="webvisor_allow_wv2"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_allow_wv2]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_allow_wv2]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[webvisor_wv_forms]"
+                      cachedDataType="i4"
+                      cachedName="webvisor_wv_forms"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_wv_forms]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[webvisor_wv_forms]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_async]"
+                      cachedDataType="i4"
+                      cachedName="code_options_async"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_async]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_async]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_enabled]"
+                      cachedDataType="i4"
+                      cachedName="code_options_informer_enabled"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_enabled]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_enabled]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_options_informer_type"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_type]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_type]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_size]"
+                      cachedDataType="i4"
+                      cachedName="code_options_informer_size"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_size]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_size]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_options_informer_indicator"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_indicator]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_indicator]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_color_start]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_options_informer_color_start"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_start]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_start]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_color_end]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_options_informer_color_end"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_end]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_end]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_color_text]"
+                      cachedDataType="i4"
+                      cachedName="code_options_informer_color_text"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_text]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_text]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_informer_color_arrow]"
+                      cachedDataType="i4"
+                      cachedName="code_options_informer_color_arrow"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_arrow]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_informer_color_arrow]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_visor]"
+                      cachedDataType="i4"
+                      cachedName="code_options_visor"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_visor]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_visor]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_track_hash]"
+                      cachedDataType="i4"
+                      cachedName="code_options_track_hash"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_track_hash]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_track_hash]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_xml_site]"
+                      cachedDataType="i4"
+                      cachedName="code_options_xml_site"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_xml_site]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_xml_site]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_clickmap]"
+                      cachedDataType="i4"
+                      cachedName="code_options_clickmap"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_clickmap]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_clickmap]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_in_one_line]"
+                      cachedDataType="i4"
+                      cachedName="code_options_in_one_line"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_in_one_line]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_in_one_line]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_ecommerce]"
+                      cachedDataType="i4"
+                      cachedName="code_options_ecommerce"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ecommerce]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_alternative_cdn]"
+                      cachedDataType="i4"
+                      cachedName="code_options_alternative_cdn"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_alternative_cdn]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_alternative_cdn]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_ecommerce_object]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="code_options_ecommerce_object"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ecommerce_object]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ecommerce_object]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[code_options_ytm]"
+                      cachedDataType="bool"
+                      cachedName="code_options_ytm"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ytm]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[code_options_ytm]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[create_time]"
+                      cachedDataType="date"
+                      cachedName="create_time"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[create_time]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[create_time]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[time_zone_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="time_zone_name"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[time_zone_name]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_name]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[time_zone_offset]"
+                      cachedDataType="i4"
+                      cachedName="time_zone_offset"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[time_zone_offset]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[time_zone_offset]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[partner_id]"
+                      cachedDataType="i4"
+                      cachedName="partner_id"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[partner_id]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[partner_id]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[site]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="site"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[site2_site]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="site2_site"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site2_site]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site2_site]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[site2_domain]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="site2_domain"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site2_domain]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[site2_domain]" />
+                    <inputColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[gdpr_agreement_accepted]"
+                      cachedDataType="i4"
+                      cachedName="gdpr_agreement_accepted"
+                      externalMetadataColumnId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[gdpr_agreement_accepted]"
+                      lineageId="Package\Буфер\Источник.Outputs[Output].Columns[gdpr_agreement_accepted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="100"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[owner_login]"
+                      dataType="wstr"
+                      length="100"
+                      name="owner_login" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_status]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_status" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[activity_status]"
+                      dataType="wstr"
+                      length="100"
+                      name="activity_status" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="100"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[favorite]"
+                      dataType="i4"
+                      name="favorite" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hide_address]"
+                      dataType="i4"
+                      name="hide_address" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[pro]"
+                      dataType="i4"
+                      name="pro" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[permission]"
+                      dataType="wstr"
+                      length="100"
+                      name="permission" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_urls]"
+                      dataType="wstr"
+                      length="100"
+                      name="webvisor_urls" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_arch_enabled]"
+                      dataType="i4"
+                      name="webvisor_arch_enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_arch_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="webvisor_arch_type" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_load_player_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="webvisor_load_player_type" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_wv_version]"
+                      dataType="i4"
+                      name="webvisor_wv_version" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_allow_wv2]"
+                      dataType="bool"
+                      name="webvisor_allow_wv2" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[webvisor_wv_forms]"
+                      dataType="i4"
+                      name="webvisor_wv_forms" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_async]"
+                      dataType="i4"
+                      name="code_options_async" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_enabled]"
+                      dataType="i4"
+                      name="code_options_informer_enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_options_informer_type" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_size]"
+                      dataType="i4"
+                      name="code_options_informer_size" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_indicator]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_options_informer_indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_start]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_options_informer_color_start" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_end]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_options_informer_color_end" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_text]"
+                      dataType="i4"
+                      name="code_options_informer_color_text" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_informer_color_arrow]"
+                      dataType="i4"
+                      name="code_options_informer_color_arrow" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_visor]"
+                      dataType="i4"
+                      name="code_options_visor" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_track_hash]"
+                      dataType="i4"
+                      name="code_options_track_hash" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_xml_site]"
+                      dataType="i4"
+                      name="code_options_xml_site" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_clickmap]"
+                      dataType="i4"
+                      name="code_options_clickmap" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_in_one_line]"
+                      dataType="i4"
+                      name="code_options_in_one_line" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ecommerce]"
+                      dataType="i4"
+                      name="code_options_ecommerce" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_alternative_cdn]"
+                      dataType="i4"
+                      name="code_options_alternative_cdn" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ecommerce_object]"
+                      dataType="wstr"
+                      length="100"
+                      name="code_options_ecommerce_object" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[code_options_ytm]"
+                      dataType="bool"
+                      name="code_options_ytm" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[create_time]"
+                      dataType="dbTimeStamp"
+                      name="create_time" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[time_zone_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="time_zone_name" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[time_zone_offset]"
+                      dataType="i4"
+                      name="time_zone_offset" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[partner_id]"
+                      dataType="i4"
+                      name="partner_id" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site]"
+                      dataType="wstr"
+                      length="100"
+                      name="site" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site2_site]"
+                      dataType="wstr"
+                      length="100"
+                      name="site2_site" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[site2_domain]"
+                      dataType="wstr"
+                      length="100"
+                      name="site2_domain" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[gdpr_agreement_accepted]"
+                      dataType="i4"
+                      name="gdpr_agreement_accepted" />
+                    <externalMetadataColumn
+                      refId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SYSMOMENT]"
+                      dataType="dbTimeStamp"
+                      name="SYSMOMENT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Буфер\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Буфер\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Буфер\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Буфер\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Буфер.Paths[Output]"
+              endId="Package\Буфер\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Output"
+              startId="Package\Буфер\Источник.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Создание буфера"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{dead0e96-3489-42ae-87cd-44c264b58ca9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Создание буфера"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}"
+          SQLTask:SqlStatementSource="if exists (select 1&#xA;            from  sysobjects&#xA;           where  id = object_id('[BUFFER].[YandexMetric_Counters]')&#xA;            and   type = 'U')&#xA;   drop table [BUFFER].[YandexMetric_Counters]&#xA;&#xA;SELECT TOP 0 * INTO [BUFFER].[YandexMetric_Counters] FROM [YandexMetric].[Counters]&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Стейджинг"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3715d6a8-faf7-4e5e-80e1-96f24ef8a555}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Стейджинг"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;  &#xA;  &#xA;BEGIN TRY  &#xA; MERGE [YandexMetric].[Counters] WITH(TABLOCK) TGT&#xA; USING [BUFFER].[YandexMetric_Counters] SRC ON (TGT.[id] = SRC.[id])&#xA; WHEN MATCHED AND &#xA; CHECKSUM&#xA; (&#xA;   SRC.[status]&#xA;      ,SRC.[owner_login]&#xA;      ,SRC.[code_status]&#xA;      ,SRC.[activity_status]&#xA;      ,SRC.[name]&#xA;      ,SRC.[type]&#xA;      ,SRC.[favorite]&#xA;      ,SRC.[hide_address]&#xA;      ,SRC.[pro]&#xA;      ,SRC.[permission]&#xA;      ,SRC.[webvisor_urls]&#xA;      ,SRC.[webvisor_arch_enabled]&#xA;      ,SRC.[webvisor_arch_type]&#xA;      ,SRC.[webvisor_load_player_type]&#xA;      ,SRC.[webvisor_wv_version]&#xA;      ,SRC.[webvisor_allow_wv2]&#xA;      ,SRC.[webvisor_wv_forms]&#xA;      ,SRC.[code_options_async]&#xA;      ,SRC.[code_options_informer_enabled]&#xA;      ,SRC.[code_options_informer_type]&#xA;      ,SRC.[code_options_informer_size]&#xA;      ,SRC.[code_options_informer_indicator]&#xA;      ,SRC.[code_options_informer_color_start]&#xA;      ,SRC.[code_options_informer_color_end]&#xA;      ,SRC.[code_options_informer_color_text]&#xA;      ,SRC.[code_options_informer_color_arrow]&#xA;      ,SRC.[code_options_visor]&#xA;      ,SRC.[code_options_track_hash]&#xA;      ,SRC.[code_options_xml_site]&#xA;      ,SRC.[code_options_clickmap]&#xA;      ,SRC.[code_options_in_one_line]&#xA;      ,SRC.[code_options_ecommerce]&#xA;      ,SRC.[code_options_alternative_cdn]&#xA;      ,SRC.[code_options_ecommerce_object]&#xA;      ,SRC.[code_options_ytm]&#xA;      ,SRC.[create_time]&#xA;      ,SRC.[time_zone_name]&#xA;      ,SRC.[time_zone_offset]&#xA;      ,SRC.[partner_id]&#xA;      ,SRC.[site]&#xA;      ,SRC.[site2_site]&#xA;      ,SRC.[site2_domain]&#xA;      ,SRC.[gdpr_agreement_accepted]&#xA; ) &lt;&gt;&#xA; CHECKSUM&#xA; (&#xA;   TGT.[status]&#xA;      ,TGT.[owner_login]&#xA;      ,TGT.[code_status]&#xA;      ,TGT.[activity_status]&#xA;      ,TGT.[name]&#xA;      ,TGT.[type]&#xA;      ,TGT.[favorite]&#xA;      ,TGT.[hide_address]&#xA;      ,TGT.[pro]&#xA;      ,TGT.[permission]&#xA;      ,TGT.[webvisor_urls]&#xA;      ,TGT.[webvisor_arch_enabled]&#xA;      ,TGT.[webvisor_arch_type]&#xA;      ,TGT.[webvisor_load_player_type]&#xA;      ,TGT.[webvisor_wv_version]&#xA;      ,TGT.[webvisor_allow_wv2]&#xA;      ,TGT.[webvisor_wv_forms]&#xA;      ,TGT.[code_options_async]&#xA;      ,TGT.[code_options_informer_enabled]&#xA;      ,TGT.[code_options_informer_type]&#xA;      ,TGT.[code_options_informer_size]&#xA;      ,TGT.[code_options_informer_indicator]&#xA;      ,TGT.[code_options_informer_color_start]&#xA;      ,TGT.[code_options_informer_color_end]&#xA;      ,TGT.[code_options_informer_color_text]&#xA;      ,TGT.[code_options_informer_color_arrow]&#xA;      ,TGT.[code_options_visor]&#xA;      ,TGT.[code_options_track_hash]&#xA;      ,TGT.[code_options_xml_site]&#xA;      ,TGT.[code_options_clickmap]&#xA;      ,TGT.[code_options_in_one_line]&#xA;      ,TGT.[code_options_ecommerce]&#xA;      ,TGT.[code_options_alternative_cdn]&#xA;      ,TGT.[code_options_ecommerce_object]&#xA;      ,TGT.[code_options_ytm]&#xA;      ,TGT.[create_time]&#xA;      ,TGT.[time_zone_name]&#xA;      ,TGT.[time_zone_offset]&#xA;      ,TGT.[partner_id]&#xA;      ,TGT.[site]&#xA;      ,TGT.[site2_site]&#xA;      ,TGT.[site2_domain]&#xA;      ,TGT.[gdpr_agreement_accepted]&#xA; ) THEN&#xA; UPDATE SET&#xA;   [status] = SRC.[status]&#xA;      ,[owner_login] = SRC.[owner_login]&#xA;      ,[code_status] = SRC.[code_status]&#xA;      ,[activity_status] = SRC.[activity_status]&#xA;      ,[name] = SRC.[name]&#xA;      ,[type] = SRC.[type]&#xA;      ,[favorite] = SRC.[favorite]&#xA;      ,[hide_address] = SRC.[hide_address]&#xA;      ,[pro] = SRC.[pro]&#xA;      ,[permission] = SRC.[permission]&#xA;      ,[webvisor_urls] = SRC.[webvisor_urls]&#xA;      ,[webvisor_arch_enabled] = SRC.[webvisor_arch_enabled]&#xA;      ,[webvisor_arch_type] = SRC.[webvisor_arch_type]&#xA;      ,[webvisor_load_player_type] = SRC.[webvisor_load_player_type]&#xA;      ,[webvisor_wv_version] = SRC.[webvisor_wv_version]&#xA;      ,[webvisor_allow_wv2] = SRC.[webvisor_allow_wv2]&#xA;      ,[webvisor_wv_forms] = SRC.[webvisor_wv_forms]&#xA;      ,[code_options_async] = SRC.[code_options_async]&#xA;      ,[code_options_informer_enabled] = SRC.[code_options_informer_enabled]&#xA;      ,[code_options_informer_type] = SRC.[code_options_informer_type]&#xA;      ,[code_options_informer_size] = SRC.[code_options_informer_size]&#xA;      ,[code_options_informer_indicator] = SRC.[code_options_informer_indicator]&#xA;      ,[code_options_informer_color_start] = SRC.[code_options_informer_color_start]&#xA;      ,[code_options_informer_color_end] = SRC.[code_options_informer_color_end]&#xA;      ,[code_options_informer_color_text] = SRC.[code_options_informer_color_text]&#xA;      ,[code_options_informer_color_arrow] = SRC.[code_options_informer_color_arrow]&#xA;      ,[code_options_visor] = SRC.[code_options_visor]&#xA;      ,[code_options_track_hash] = SRC.[code_options_track_hash]&#xA;      ,[code_options_xml_site] = SRC.[code_options_xml_site]&#xA;      ,[code_options_clickmap] = SRC.[code_options_clickmap]&#xA;      ,[code_options_in_one_line] = SRC.[code_options_in_one_line]&#xA;      ,[code_options_ecommerce] = SRC.[code_options_ecommerce]&#xA;      ,[code_options_alternative_cdn] = SRC.[code_options_alternative_cdn]&#xA;      ,[code_options_ecommerce_object] = SRC.[code_options_ecommerce_object]&#xA;      ,[code_options_ytm] = SRC.[code_options_ytm]&#xA;      ,[create_time] = SRC.[create_time]&#xA;      ,[time_zone_name] = SRC.[time_zone_name]&#xA;      ,[time_zone_offset] = SRC.[time_zone_offset]&#xA;      ,[partner_id] = SRC.[partner_id]&#xA;      ,[site] = SRC.[site]&#xA;      ,[site2_site] = SRC.[site2_site]&#xA;      ,[site2_domain] = SRC.[site2_domain]&#xA;      ,[gdpr_agreement_accepted] = SRC.[gdpr_agreement_accepted]&#xA;   ,SYSMOMENT = GETDATE()&#xA; WHEN NOT MATCHED THEN&#xA;  INSERT (&#xA; [id]&#xA;    ,[status]&#xA;    ,[owner_login]&#xA;    ,[code_status]&#xA;    ,[activity_status]&#xA;    ,[name]&#xA;    ,[type]&#xA;    ,[favorite]&#xA;    ,[hide_address]&#xA;    ,[pro]&#xA;    ,[permission]&#xA;    ,[webvisor_urls]&#xA;    ,[webvisor_arch_enabled]&#xA;    ,[webvisor_arch_type]&#xA;    ,[webvisor_load_player_type]&#xA;    ,[webvisor_wv_version]&#xA;    ,[webvisor_allow_wv2]&#xA;    ,[webvisor_wv_forms]&#xA;    ,[code_options_async]&#xA;    ,[code_options_informer_enabled]&#xA;    ,[code_options_informer_type]&#xA;    ,[code_options_informer_size]&#xA;    ,[code_options_informer_indicator]&#xA;    ,[code_options_informer_color_start]&#xA;    ,[code_options_informer_color_end]&#xA;    ,[code_options_informer_color_text]&#xA;    ,[code_options_informer_color_arrow]&#xA;    ,[code_options_visor]&#xA;    ,[code_options_track_hash]&#xA;    ,[code_options_xml_site]&#xA;    ,[code_options_clickmap]&#xA;    ,[code_options_in_one_line]&#xA;    ,[code_options_ecommerce]&#xA;    ,[code_options_alternative_cdn]&#xA;    ,[code_options_ecommerce_object]&#xA;    ,[code_options_ytm]&#xA;    ,[create_time]&#xA;    ,[time_zone_name]&#xA;    ,[time_zone_offset]&#xA;    ,[partner_id]&#xA;    ,[site]&#xA;    ,[site2_site]&#xA;    ,[site2_domain]&#xA;    ,[gdpr_agreement_accepted]&#xA;    ,[SYSMOMENT]&#xA;  )&#xA;  VALUES (&#xA; SRC.[id]&#xA;    ,SRC.[status]&#xA;    ,SRC.[owner_login]&#xA;    ,SRC.[code_status]&#xA;    ,SRC.[activity_status]&#xA;    ,SRC.[name]&#xA;    ,SRC.[type]&#xA;    ,SRC.[favorite]&#xA;    ,SRC.[hide_address]&#xA;    ,SRC.[pro]&#xA;    ,SRC.[permission]&#xA;    ,SRC.[webvisor_urls]&#xA;    ,SRC.[webvisor_arch_enabled]&#xA;    ,SRC.[webvisor_arch_type]&#xA;    ,SRC.[webvisor_load_player_type]&#xA;    ,SRC.[webvisor_wv_version]&#xA;    ,SRC.[webvisor_allow_wv2]&#xA;    ,SRC.[webvisor_wv_forms]&#xA;    ,SRC.[code_options_async]&#xA;    ,SRC.[code_options_informer_enabled]&#xA;    ,SRC.[code_options_informer_type]&#xA;    ,SRC.[code_options_informer_size]&#xA;    ,SRC.[code_options_informer_indicator]&#xA;    ,SRC.[code_options_informer_color_start]&#xA;    ,SRC.[code_options_informer_color_end]&#xA;    ,SRC.[code_options_informer_color_text]&#xA;    ,SRC.[code_options_informer_color_arrow]&#xA;    ,SRC.[code_options_visor]&#xA;    ,SRC.[code_options_track_hash]&#xA;    ,SRC.[code_options_xml_site]&#xA;    ,SRC.[code_options_clickmap]&#xA;    ,SRC.[code_options_in_one_line]&#xA;    ,SRC.[code_options_ecommerce]&#xA;    ,SRC.[code_options_alternative_cdn]&#xA;    ,SRC.[code_options_ecommerce_object]&#xA;    ,SRC.[code_options_ytm]&#xA;    ,SRC.[create_time]&#xA;    ,SRC.[time_zone_name]&#xA;    ,SRC.[time_zone_offset]&#xA;    ,SRC.[partner_id]&#xA;    ,SRC.[site]&#xA;    ,SRC.[site2_site]&#xA;    ,SRC.[site2_domain]&#xA;    ,SRC.[gdpr_agreement_accepted]&#xA;    ,GETDATE()&#xA;  );&#xA;&#xA;END TRY  &#xA;BEGIN CATCH  &#xA;    DECLARE @ErrorMessage NVARCHAR(4000);  &#xA;    DECLARE @ErrorSeverity INT;  &#xA;    DECLARE @ErrorState INT;  &#xA;  &#xA;    SELECT   &#xA;        @ErrorMessage = ERROR_MESSAGE(),  &#xA;        @ErrorSeverity = ERROR_SEVERITY(),  &#xA;        @ErrorState = ERROR_STATE();  &#xA;  &#xA;    IF @@TRANCOUNT &gt; 0  &#xA;        ROLLBACK TRANSACTION;  &#xA;&#xA;    RAISERROR (@ErrorMessage, -- Message text.  &#xA;               @ErrorSeverity, -- Severity.  &#xA;               @ErrorState -- State.  &#xA;               ); &#xA; &#xA;END CATCH;  &#xA;  &#xA;IF @@TRANCOUNT &gt; 0  &#xA;    COMMIT TRANSACTION;  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Удаление буфера"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{60719f83-b2ac-4234-9e06-b2e6c7c2cba4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Удаление буфера"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CA4A1DC9-22A3-4932-A092-D2CDF0854EFF}"
+          SQLTask:SqlStatementSource="if exists (select 1&#xA;            from  sysobjects&#xA;           where  id = object_id('[BUFFER].[YandexMetric_Counters]')&#xA;            and   type = 'U')&#xA;   drop table [BUFFER].[YandexMetric_Counters]&#xA;&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BACAEEE3-C66B-4089-8F76-C89F85FE741A}"
+      DTS:From="Package\Создание буфера"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Буфер" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D8966431-D807-461A-8F09-C16207AEC643}"
+      DTS:From="Package\Буфер"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Стейджинг" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{809CA656-ACEA-415B-A11A-B6EA507BA183}"
+      DTS:From="Package\Стейджинг"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Удаление буфера" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Создание буфера"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Буфер"
+          TopLeft="60,130" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Стейджинг"
+          TopLeft="85,217" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Удаление буфера"
+          TopLeft="63,306" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="147.75,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="149.5,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="150.75,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Буфер">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Буфер\Источник"
+          TopLeft="157,122" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Буфер\Приемник"
+          TopLeft="607,116" />
+        <EdgeLayout
+          Id="Package\Буфер.Paths[Output]"
+          TopLeft="282,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="325,0"
+              Start="0,0"
+              End="317.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="317.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Буфер\Приемник">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

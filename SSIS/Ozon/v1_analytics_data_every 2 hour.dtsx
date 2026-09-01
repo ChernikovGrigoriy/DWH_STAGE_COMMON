@@ -1,0 +1,2912 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/27/2025 6:29:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RAW01"
+  DTS:CreatorName="GRT\chernikov"
+  DTS:Description="TABLE_TRACKING:[Ozon].[v1_analytics_data]"
+  DTS:DTSID="{D166DEC6-0CDC-49DC-83C1-1A85FFCB1155}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="v1_analytics_data_every 2 hour"
+  DTS:PackageType="5"
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{C8BFF081-6D54-4D81-A941-4B326D20B3C4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{69399860-9C23-41DA-8144-252BA1FCE446}"
+      DTS:ObjectName="pSYSMOMENT">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">6/9/2025 4:10:04 AM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F5B3549-64B2-4A08-9E4C-4F74532A9D2F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vAccountObj">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{50AA9108-C422-4FB7-84D4-8C801D29062D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vApiKey">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7657806F-A3BD-46B7-A44A-0D3BB26A8074}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vClientID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7278359D-64E0-41F3-B5EE-0911C497324A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vDatesObj">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB8E2788-D8F1-4875-AA16-4B8092ECF199}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vId_Account">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2B1157E8-C78B-42A1-996C-8822339E5E83}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Account"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F3751CCD-7BC3-4963-9314-C78D7AA55DAE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Account"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+          SQLTask:SqlStatementSource="SELECT&#xA; [id_account]&#xA;,[Name]&#xA;,[ClientId]&#xA;,[ApiKey]&#xA;FROM&#xA; [Ozon].[Account]&#xA;ORDER BY &#xA; id_account"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vAccountObj" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{B2F0774B-4B2A-486A-AF94-836B6310F9CB}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{C165432C-4277-447B-AC7F-70D56291CD57}"
+        DTS:ObjectName="{C165432C-4277-447B-AC7F-70D56291CD57}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::vAccountObj" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{FBB239E1-39E8-460B-B09F-1165BCFC480A}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="vDate">
+          <DTS:VariableValue
+            DTS:DataType="7">1/1/1900</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Диапазон дат"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A4756396-13E6-4764-B27C-099F13BB23D0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Диапазон дат"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+              SQLTask:SqlStatementSource="DECLARE @SYSMOMENT date, @id_account int&#xA;&#xA;SELECT  @SYSMOMENT = GETDATE(), @id_account = ?&#xA;&#xA;SELECT&#xA;&#x9;DISTINCT TOP 50 [DATA]&#xA;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[DATA], 1 [T1]&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;[dbo].[fnDATA] (DATEADD(day, -1, @SYSMOMENT), @SYSMOMENT, 0)&#xA;&#x9;) TMP&#xA;ORDER BY [DATA] desc&#xA;"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vDatesObj" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::vId_Account"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\загружаемые даты"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{F5177BD0-CEE9-4961-9EB6-6BCE3E35572D}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="загружаемые даты">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{F3E3192E-2689-4C70-9801-0712D3BCA3CA}"
+            DTS:ObjectName="{F3E3192E-2689-4C70-9801-0712D3BCA3CA}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::vDatesObj" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Задача потока данных"
+              DTS:DTSID="{E217B893-87C6-4997-BFC7-33903525EA03}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Загрузка в буферные таблицы"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data"
+                      componentClassID="Microsoft.DerivedColumn"
+                      contactInfo="Производный столбец;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+                      description="Создает новые значения столбцов путем применения выражений к входным столбцам преобразования. Создает новые столбцы или перезаписывает существующие. Пример: объединение значений столбцов &quot;first name&quot; и &quot;last name&quot; и создание столбца &quot;full name&quot;."
+                      name="data"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Inputs[Вход производного столбца]"
+                          description="Ввод преобразования &quot;Производный столбец&quot;"
+                          name="Вход производного столбца">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Выход производного столбца]"
+                          description="Выход по умолчанию преобразования &quot;Производный столбец&quot;"
+                          exclusionGroup="1"
+                          name="Выход производного столбца"
+                          synchronousInputId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Inputs[Вход производного столбца]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Выход производного столбца].Columns[data]"
+                              dataType="date"
+                              errorOrTruncationOperation="Вычисление"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Выход производного столбца].Columns[data]"
+                              name="data"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Выражение производного столбца"
+                                  name="Expression">@[User::vDate]</property>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Понятное выражение производного столбца"
+                                  expressionType="Notify"
+                                  name="FriendlyExpression">@[User::vDate]</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Вывод ошибок производного столбца]"
+                          description="Вывод ошибок преобразования &quot;Производный столбец&quot;"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Вывод ошибок производного столбца"
+                          synchronousInputId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Inputs[Вход производного столбца]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount"
+                      componentClassID="Microsoft.DerivedColumn"
+                      contactInfo="Производный столбец;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+                      description="Создает новые значения столбцов путем применения выражений к входным столбцам преобразования. Создает новые столбцы или перезаписывает существующие. Пример: объединение значений столбцов &quot;first name&quot; и &quot;last name&quot; и создание столбца &quot;full name&quot;."
+                      name="idAccount"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Inputs[Вход производного столбца]"
+                          description="Ввод преобразования &quot;Производный столбец&quot;"
+                          name="Вход производного столбца">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Выход производного столбца]"
+                          description="Выход по умолчанию преобразования &quot;Производный столбец&quot;"
+                          exclusionGroup="1"
+                          name="Выход производного столбца"
+                          synchronousInputId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Inputs[Вход производного столбца]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Выход производного столбца].Columns[id_Account]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Вычисление"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Выход производного столбца].Columns[id_Account]"
+                              name="id_Account"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Выражение производного столбца"
+                                  name="Expression">@[User::vId_Account]</property>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Понятное выражение производного столбца"
+                                  expressionType="Notify"
+                                  name="FriendlyExpression">@[User::vId_Account]</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Вывод ошибок производного столбца]"
+                          description="Вывод ошибок преобразования &quot;Производный столбец&quot;"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Вывод ошибок производного столбца"
+                          synchronousInputId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Inputs[Вход производного столбца]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник"
+                      componentClassID="Microsoft.ManagedComponentHost"
+                      contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;13"
+                      description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                      name="Источник"
+                      version="11">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Stores the source code of the component"
+                          isArray="true"
+                          name="SourceCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="30">
+                            <arrayElement
+                              dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public OutputBuffer OutputBuffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != OutputBuffer)
+        {
+            OutputBuffer.SetEndOfRowset();
+            OutputBuffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output"))
+            {
+                OutputBuffer = new OutputBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String vApiKey
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["vApiKey"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public Int32 vClientID
+    {
+        get
+        {
+            return (Int32)(ParentComponent.ReadOnlyVariables["vClientID"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public DateTime vDate
+    {
+        get
+        {
+            return (DateTime)(ParentComponent.ReadOnlyVariables["vDate"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
+using System.Net;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+using System.Linq;
+using System.Text;
+using System.Threading;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    #region Request
+    public class Request
+    {
+        public string date_from { get; set; }
+        public string date_to { get; set; }
+        public string[] metrics { get; set; }
+        public string[] dimension { get; set; }
+        public Request_Filter[] filters { get; set; }
+        public Request_Sort[] sort { get; set; }
+        public int limit { get; set; }
+        public int offset { get; set; }
+    }
+    public class Request_Filter
+    {
+        public string key { get; set; }
+        public string op { get; set; }
+        public string value { get; set; }
+    }
+
+    public class Request_Sort
+    {
+        public string key { get; set; }
+        public string order { get; set; }
+    }
+    #endregion
+
+    #region Response
+    public class Response
+    {
+        public Response_Result result { get; set; }
+        public string timestamp { get; set; }
+    }
+
+    public class Response_Result
+    {
+        public Response_Result_Data[] data { get; set; }
+        public decimal[] totals { get; set; }
+    }
+
+    public class Response_Result_Data
+    {
+        public Response_Result_Data_Dimension[] dimensions { get; set; }
+        public decimal[] metrics { get; set; }
+
+    }
+
+    public class Response_Result_Data_Dimension
+    {
+        public long id { get; set; }
+        public string name { get; set; }
+    }
+    #endregion
+
+    public class TimeoutWebClient : WebClient
+    {
+        /// <summary>
+        /// Default constructor (30000 ms timeout)
+        /// NOTE: timeout can be changed later on using the [Timeout] property.
+        /// </summary>
+        public TimeoutWebClient() : this(30000) { }
+
+        /// <summary>
+        /// Constructor with customizable timeout
+        /// </summary>
+        /// <param name="timeout">
+        /// Web request timeout (in milliseconds)
+        /// </param>
+        public TimeoutWebClient(int timeout)
+        {
+            Timeout = timeout;
+        }
+
+        #region Methods
+        protected override WebRequest GetWebRequest(Uri uri)
+        {
+            WebRequest w = base.GetWebRequest(uri);
+            w.Timeout = Timeout;
+            ((HttpWebRequest)w).ReadWriteTimeout = Timeout;
+            return w;
+        }
+        #endregion
+
+        /// <summary>
+        /// Web request timeout (in milliseconds)
+        /// </summary>
+        public int Timeout { get; set; }
+    }
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+        JavaScriptSerializer oJSS = new JavaScriptSerializer();
+        oJSS.MaxJsonLength = int.MaxValue;
+
+        byte[] vDATA = null;
+
+        string vFieldError = "";
+
+        DateTime vWorkDate = Variables.vDate;
+
+        try
+        {
+            Request oRequest = new Request
+            {
+                date_from = string.Format("{0:yyyy-MM-dd}", vWorkDate),
+                date_to = string.Format("{0:yyyy-MM-dd}", vWorkDate),
+                dimension = new string[] { "sku" },
+                metrics = new string[] { "hits_view_search", "revenue", "ordered_units", "hits_view_pdp", "hits_view", "hits_tocart_search", "hits_tocart_pdp", "hits_tocart", "session_view_search", "session_view_pdp", "session_view", "conv_tocart_search", "conv_tocart_pdp", "position_category" },
+                sort = new Request_Sort[] {
+                    new Request_Sort
+                    {
+                      key = "hits_view_search",
+                      order = "ASC"
+                    }
+                },
+                limit = 1000,
+                offset = 0
+            };
+
+            Response oResponse = null;
+
+            do
+            {
+                int i = 1;
+                while (i <= 6)
+                {
+                    try
+                    {
+                        TimeoutWebClient oTWC = new TimeoutWebClient(30000);
+                        string vURL = String.Format("https://api-seller.ozon.ru/v1/analytics/data");
+                        byte[] vDataSend = Encoding.UTF8.GetBytes(oJSS.Serialize(oRequest));
+                        oTWC.Headers.Add("Client-Id", string.Format("{0}", Variables.vClientID));
+                        oTWC.Headers.Add("Api-Key", Variables.vApiKey);
+                        vDATA = oTWC.UploadData(vURL, vDataSend);
+                        oTWC = null;
+
+                        break;
+                    }
+                    catch (WebException e)
+                    {
+                        if (e.Message.Contains("Too Many Requests") ||
+                            e.Message.Contains("Время ожидания операции истекло") ||
+                            e.Message.Contains("(504) Истекло время ожидания шлюза"))
+                        {
+                            Thread.Sleep(26000 * i);
+                            i++;
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                if (i > 6)
+                    throw new ApplicationException("Метод https://api-seller.ozon.ru/v1/analytics/data на сервере Ozon не отвечает");
+
+                oResponse = oJSS.Deserialize<Response>(Encoding.UTF8.GetString(vDATA));
+
+
+                foreach (Response_Result_Data item in oResponse.result.data)
+                {
+                    OutputBuffer.AddRow();
+
+                    OutputBuffer.sku = item.dimensions[0].id;
+                    OutputBuffer.skuname = item.dimensions[0].name;
+                    OutputBuffer.hitsviewsearch = item.metrics[0];
+                    OutputBuffer.revenue = item.metrics[1];
+                    OutputBuffer.orderedunits = item.metrics[2];
+                    OutputBuffer.hitsviewpdp = item.metrics[3];
+                    OutputBuffer.hitsview = item.metrics[4];
+                    OutputBuffer.hitstocartsearch = item.metrics[5];
+                    OutputBuffer.hitstocartpdp = item.metrics[6];
+                    OutputBuffer.hitstocart = item.metrics[7];
+                    OutputBuffer.sessionviewsearch = item.metrics[8];
+                    OutputBuffer.sessionviewpdp = item.metrics[9];
+                    OutputBuffer.sessionview = item.metrics[10];
+                    OutputBuffer.convtocartsearch = item.metrics[11];
+                    OutputBuffer.convtocartpdp = item.metrics[12];
+                    OutputBuffer.positioncategory = item.metrics[13];
+                }
+
+                oRequest.offset += 1000;
+                
+            } while (oResponse != null && oResponse.result.data.Length > 0);
+
+        }
+        catch (Exception e)
+        {
+            bool cancel;
+            ComponentMetaData.FireError(10, string.Format("Ozon Поле:{1} {0}", DateTime.Now, vFieldError), e.Message, "", 0, out cancel);
+        }
+    }
+
+}
+]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class OutputBuffer: ScriptBuffer
+
+{
+    public OutputBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int64 sku
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool sku_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String skuname
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool skuname_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal revenue
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool revenue_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal orderedunits
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool orderedunits_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitsviewsearch
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool hitsviewsearch_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitsviewpdp
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool hitsviewpdp_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitsview
+    {
+        set
+        {
+            this[6] = value;
+        }
+    }
+    public bool hitsview_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(6);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitstocartsearch
+    {
+        set
+        {
+            this[7] = value;
+        }
+    }
+    public bool hitstocartsearch_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(7);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitstocartpdp
+    {
+        set
+        {
+            this[8] = value;
+        }
+    }
+    public bool hitstocartpdp_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(8);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal hitstocart
+    {
+        set
+        {
+            this[9] = value;
+        }
+    }
+    public bool hitstocart_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(9);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal sessionviewsearch
+    {
+        set
+        {
+            this[10] = value;
+        }
+    }
+    public bool sessionviewsearch_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(10);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal sessionviewpdp
+    {
+        set
+        {
+            this[11] = value;
+        }
+    }
+    public bool sessionviewpdp_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(11);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal sessionview
+    {
+        set
+        {
+            this[12] = value;
+        }
+    }
+    public bool sessionview_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(12);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal convtocartsearch
+    {
+        set
+        {
+            this[13] = value;
+        }
+    }
+    public bool convtocartsearch_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(13);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal convtocartpdp
+    {
+        set
+        {
+            this[14] = value;
+        }
+    }
+    public bool convtocartpdp_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(14);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal positioncategory
+    {
+        set
+        {
+            this[15] = value;
+        }
+    }
+    public bool positioncategory_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(15);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_74b3eac0aad440ec96883c1c62e46122.Properties.Settings.get_Default():SC_74b3eac0aad440ec96883c1c62e46122.Properties.Sett" +
+    "ings")]
+
+namespace SC_74b3eac0aad440ec96883c1c62e46122.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[SC_74b3eac0aad440ec96883c1c62e46122.csproj]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC818E0F-6352-4B21-A67C-16321750D6AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_74b3eac0aad440ec96883c1c62e46122</RootNamespace>
+    <AssemblyName>SC_74b3eac0aad440ec96883c1c62e46122</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Project]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_74b3eac0aad440ec96883c1c62e46122</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_74b3eac0aad440ec96883c1c62e46122</msb:DisplayName>
+    <msb:ProjectId>{1699FEDB-7963-4578-82CC-4ED11C083B29}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_74b3eac0aad440ec96883c1c62e46122.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_74b3eac0aad440ec96883c1c62e46122")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_74b3eac0aad440ec96883c1c62e46122")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_74b3eac0aad440ec96883c1c62e46122.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_74b3eac0aad440ec96883c1c62e46122.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_74b3eac0aad440ec96883c1c62e46122.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_74b3eac0aad440ec96883c1c62e46122.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_74b3eac0aad440ec96883c1c62e46122.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                          </arrayElements>
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Stores the binary representation of the component"
+                          isArray="true"
+                          name="BinaryCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="2">
+                            <arrayElement
+                              dataType="System.String"><![CDATA[SC_74b3eac0aad440ec96883c1c62e46122.dll]]></arrayElement>
+                            <arrayElement
+                              dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD4LSGgAAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAAdlcA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACRXAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAfDcAAAAgAAAAOAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAYAAAAAYAAAA6AAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAAQAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABY
+VwAAAAAAAEgAAAACAAUA3CoAAJArAAABAAAAAAAAAGxWAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACiobMAcAawQAAAEAABEg8A8AACgS
+AAAKcxMAAAoKBiD///9/bxQAAAoUC3IBAABwDAJ7AgAABG8yAAAGDXNKAAAGEwYRBnIDAABwCYwP
+AAABKBUAAApvOwAABhEGcgMAAHAJjA8AAAEoFQAACm89AAAGEQYXjSQAAAElFnIhAABwom9BAAAG
+EQYfDo0kAAABJRZyKQAAcKIlF3JLAABwoiUYclsAAHCiJRlydwAAcKIlGnKTAABwoiUbcqcAAHCi
+JRxyzQAAcKIlHXLtAABwoiUecgUBAHCiJR8Jci0BAHCiJR8Kck8BAHCiJR8LcmkBAHCiJR8Mco8B
+AHCiJR8Ncq8BAHCibz8AAAYRBheNCwAAAiUWc1YAAAYlcikAAHBvUwAABiVy0wEAcG9VAAAGom9F
+AAAGEQYg6AMAAG9HAAAGEQYWb0kAAAYRBhMEFBMFFxMHONUAAAAAIDB1AABzbAAABnLbAQBwKAEA
+ACsoFwAAChMIKBgAAAoGEQRvGQAACm8aAAAKEwklbxsAAApyNQIAcHJJAgBwAnsCAAAEbzEAAAaM
+KAAAASgVAAAKbxwAAAolbxsAAApyUQIAcAJ7AgAABG8wAAAGbxwAAAoRCBEJbx0AAAoL3lwTChEK
+bx4AAApyYQIAcG8fAAAKLSYRCm8eAAAKcoUCAHBvHwAACi0TEQpvHgAACnLFAgBwbx8AAAosFSCQ
+ZQAAEQdaKCAAAAoRBxdYEwcrAv4a3gARBxw+I////xEHHDELcgsDAHBzIQAACnoGKBgAAAoHbyIA
+AApvAgAAKxMFEQVvVwAABm9cAAAGEwsWEww4nwEAABELEQyaEw0CewMAAARvJgAABgJ7AwAABBEN
+b2EAAAYWmm9mAAAGbwYAAAYCewMAAAQRDW9hAAAGFppvaAAABm8IAAAGAnsDAAAEEQ1vYwAABhaj
+FAAAAW8OAAAGAnsDAAAEEQ1vYwAABhejFAAAAW8KAAAGAnsDAAAEEQ1vYwAABhijFAAAAW8MAAAG
+AnsDAAAEEQ1vYwAABhmjFAAAAW8QAAAGAnsDAAAEEQ1vYwAABhqjFAAAAW8SAAAGAnsDAAAEEQ1v
+YwAABhujFAAAAW8UAAAGAnsDAAAEEQ1vYwAABhyjFAAAAW8WAAAGAnsDAAAEEQ1vYwAABh2jFAAA
+AW8YAAAGAnsDAAAEEQ1vYwAABh6jFAAAAW8aAAAGAnsDAAAEEQ1vYwAABh8JoxQAAAFvHAAABgJ7
+AwAABBENb2MAAAYfCqMUAAABbx4AAAYCewMAAAQRDW9jAAAGHwujFAAAAW8gAAAGAnsDAAAEEQ1v
+YwAABh8MoxQAAAFvIgAABgJ7AwAABBENb2MAAAYfDaMUAAABbyQAAAYRDBdYEwwRDBELjmk/Vv7/
+/xEEJW9IAAAGIOgDAABYb0kAAAYRBSwSEQVvVwAABm9cAAAGjjoP/f//3jUTDgIoJAAACh8KcqoD
+AHAoJQAACowPAAABCCgmAAAKEQ5vHgAACnIBAABwFhIPbycAAAreACoAQTQAAAAAAABLAQAAgAAA
+AMsBAABUAAAAEAAAAQAAAAAvAAAABgQAADUEAAA1AAAAEQAAAR4CKCkAAAYqKgIDBAUoKAAACio6
+AhYDjC0AAAEoKQAACipaAywIAhYoKgAACipyzgMAcHMrAAAKeiYCFwMoKQAACipaAywIAhcoKgAA
+CipyzgMAcHMrAAAKejoCGAOMFAAAASgpAAAKKloDLAgCGCgqAAAKKnLOAwBwcysAAAp6OgIZA4wU
+AAABKCkAAAoqWgMsCAIZKCoAAAoqcs4DAHBzKwAACno6AhoDjBQAAAEoKQAACipaAywIAhooKgAA
+CipyzgMAcHMrAAAKejoCGwOMFAAAASgpAAAKKloDLAgCGygqAAAKKnLOAwBwcysAAAp6OgIcA4wU
+AAABKCkAAAoqWgMsCAIcKCoAAAoqcs4DAHBzKwAACno6Ah0DjBQAAAEoKQAACipaAywIAh0oKgAA
+CipyzgMAcHMrAAAKejoCHgOMFAAAASgpAAAKKloDLAgCHigqAAAKKnLOAwBwcysAAAp6PgIfCQOM
+FAAAASgpAAAKKl4DLAkCHwkoKgAACipyzgMAcHMrAAAKej4CHwoDjBQAAAEoKQAACipeAywJAh8K
+KCoAAAoqcs4DAHBzKwAACno+Ah8LA4wUAAABKCkAAAoqXgMsCQIfCygqAAAKKnLOAwBwcysAAAp6
+PgIfDAOMFAAAASgpAAAKKl4DLAkCHwwoKgAACipyzgMAcHMrAAAKej4CHw0DjBQAAAEoKQAACipe
+AywJAh8NKCoAAAoqcs4DAHBzKwAACno+Ah8OA4wUAAABKCkAAAoqXgMsCQIfDigqAAAKKnLOAwBw
+cysAAAp6PgIfDwOMFAAAASgpAAAKKl4DLAkCHw8oKgAACipyzgMAcHMrAAAKeh4CKCwAAAoqHgIo
+LQAACioeAiguAAAKKn4CKC8AAAoCAnMuAAAGfQEAAAQCAnMvAAAGfQIAAAQqBipuAnsDAAAELBIC
+ewMAAARvJwAABgIUfQMAAAQqAAATMAUASQAAAAIAABEWCisuBAaUDgRyawQAcCgwAAAKMxkCBQaa
+AgQGlCgxAAAKDgRzBQAABn0DAAAEBhdYCgYDMs4Cby0AAAYCbyoAAAYCKCsAAAYqOgIoMgAACgID
+fQQAAAQqOgIoMgAACgIDfQUAAAQqlgJ7BQAABG8zAAAKcnkEAHBvNAAACig1AAAKbzYAAAp0JAAA
+ASqWAnsFAAAEbzMAAApyiQQAcG80AAAKKDUAAApvNgAACqUoAAABKpYCewUAAARvMwAACnKdBABw
+bzQAAAooNQAACm82AAAKpQ8AAAEqHgIoMgAACiqufgYAAAQtHnKpBABw0AcAAAIoNwAACm84AAAK
+czkAAAqABgAABH4GAAAEKhp+BwAABCoeAoAHAAAEKhp+CAAABCoeAig6AAAKKi5zOAAABoAIAAAE
+Kh4CewkAAAQqIgIDfQkAAAQqHgJ7CgAABCoiAgN9CgAABCoeAnsLAAAEKiICA30LAAAEKh4CewwA
+AAQqIgIDfQwAAAQqHgJ7DQAABCoiAgN9DQAABCoeAnsOAAAEKiICA30OAAAEKh4Cew8AAAQqIgID
+fQ8AAAQqHgJ7EAAABCoiAgN9EAAABCoeAnsRAAAEKiICA30RAAAEKh4CexIAAAQqIgIDfRIAAAQq
+HgJ7EwAABCoiAgN9EwAABCoeAnsUAAAEKiICA30UAAAEKh4CexUAAAQqIgIDfRUAAAQqHgJ7FgAA
+BCoiAgN9FgAABCoeAnsXAAAEKiICA30XAAAEKh4CexgAAAQqIgIDfRgAAAQqHgJ7GQAABCoiAgN9
+GQAABCoeAnsaAAAEKiICA30aAAAEKh4CexsAAAQqIgIDfRsAAAQqHgJ7HAAABCoiAgN9HAAABCoe
+AnsdAAAEKiICA30dAAAEKjICIDB1AAAobAAABio6Aig7AAAKAgMobwAABiqWAgMoPAAACiUCKG4A
+AAZvPQAACiV0NgAAAQIobgAABm8+AAAKKh4Cex4AAAQqIgIDfR4AAAQqAEJTSkIBAAEAAAAAAAwA
+AAB2NC4wLjMwMzE5AAAAAAUAbAAAAKQSAAAjfgAAEBMAACQQAAAjU3RyaW5ncwAAAAA0IwAAHAUA
+ACNVUwBQKAAAEAAAACNHVUlEAAAAYCgAADADAAAjQmxvYgAAAAAAAAACAAABVxWiAQkLAAAA+gEz
+ABYAAAEAAAA2AAAAEAAAAB4AAABvAAAAQgAAAD4AAABSAAAAAgAAAAwAAAA8AAAAUwAAAAEAAAAH
+AAAAAQAAAAgAAAACAAAAAADiBgEAAAAAAAYAGgUKDAYArgUKDAYAZgT3Cw8AfgwAAAYAkwR0CQYA
+/QR0CQYA3gR0CQYAlQV0CQYAOgV0CQYAUwV0CQYAqgR0CQYAxQQzBgoAbgWQAw4AqQtUCQYAhwO1
+CBIArgnVDQYA4Am1CAYAzg21CAYALgQKDAYAxAa1CBIAUg7VDRIA5w7VDRIAvAa1CAoABwuQAxYA
++AqQAwoADgqQAwoAeg6QAwYASQT3CwYAJQsqDAYA6gk/CRIAGQTMBhIAegTMBhIA7gMqCRIANQvV
+DRIAsQPVDQYAUAa1CAYA2A+1CAYAKgZUDxIAmgnVDQYAdwC1CBIAhgkfAQYAAAEZBgYAuwm1CBoA
+AQBxCwYAfQC1CAYA0Am1CB4AKgBJCx4AGgBJC28AdA8AAB4AOwBJCwYAwQO1CAYARQO1CAYA/g90
+CRIA1Q7VDQAAAACMAAAAAAABAAEAAQAQAOQIAAAQAAEAAQABABAAFAsAAGEAAQAFAAEAEABcDgAA
+bQABACkAAQAQAFwNAABJAAQALgABABAAyAwAAEkABQAvAAAAEAAxDI0MSQAGADMAAAEQAAANjQyF
+AAgANwACABAA6g4AAEkACQA6AAIAEACaCwAASQARAEsAAgAQALYOAABJABQAUgACABAABgQAAEkA
+FgBXAAIAEAAlDgAASQAYAFwAAgAQAK8AAABJABoAYQACABAA7wgAAEkAHABmAAIAEABLDgAAVQAe
+AGsABgBcDTMBBgDIDDcBBgAUCzsBAQBqDj8BAQBqDj8BEQDYCEMBEQDeA0cBEQApA0sBAQCjAU8B
+AQDZAU8BAQA4AlIBAQC+AVIBAQCFAlYBAQDlAlsBAQC2AmABAQCeAmABAQAUA08BAQANAk8BAQCM
+AU8BAQAUA08BAQAhAk8BAQDNAmMBAQDyAU8BAQBMAWcBAQBRAmwBAQBpAnEBAQA4AmwBAQBiAXYB
+AQB2AU8BAQD7AmABUCAAAAAAxgDMBQYAAQBYIAAAAADGANcFBgABAGAgAAAAAMYAsw0GAAEADCUA
+AAAAhhjICwYAAQAUJQAAAACGGMgLuwABAB8lAAAAAIYIpA95AQQALiUAAAAAhggwCH4BBQBFJQAA
+AACGCHsDEAAGAE8lAAAAAIYICgd+AQcAZiUAAAAAhgj3BYMBCAB1JQAAAACGCB0HfgEJAIwlAAAA
+AIYIlA2DAQoAmyUAAAAAhggCCH4BCwCyJQAAAACGCJcGgwEMAMElAAAAAIYIhQd+AQ0A2CUAAAAA
+hgikCoMBDgDnJQAAAACGCOsHfgEPAP4lAAAAAIYIvA+DARAADSYAAAAAhghWCH4BEQAkJgAAAACG
+CFcGgwESADMmAAAAAIYIMAd+ARMASiYAAAAAhghtCoMBFABZJgAAAACGCJ8HfgEVAHAmAAAAAIYI
+pw6DARYAgCYAAAAAhggaCH4BFwCYJgAAAACGCIEGgwEYAKgmAAAAAIYIaAd+ARkAwCYAAAAAhgiR
+CoMBGgDQJgAAAACGCNEHfgEbAOgmAAAAAIYIrA+DARwA+CYAAAAAhgg/CH4BHQAQJwAAAACGCGwG
+gwEeACAnAAAAAIYITAd+AR8AOCcAAAAAhgh/CoMBIABIJwAAAACGCLgHfgEhAGAnAAAAAIYIBxCD
+ASIAcCcAAAAAhghqCH4BIwCIJwAAAACGANEPBgAkAJAnAAAAAIYA9g0GACQAmCcAAAAAhgD5DcsA
+JACgJwAAAACGGMgLBgAkAMAnAAAAAMYBpQ0GACQAwicAAAAAgQALAQYAJADgJwAAAADGAEgPiQEk
+AMAnAAAAAMYBsw0GACgANSgAAAAAhhjIC5UBKABEKAAAAACGGMgLlQEpAFMoAAAAAIYI3g9+ACoA
+eSgAAAAAhgiVAJsBKgCfKAAAAACGCA8EnwEqAMUoAAAAAIMYyAsGACoAzSgAAAAAkwghC6QBKgD5
+KAAAAACTCMYDqQEqAAApAAAAAJMI0gOuASoACCkAAAAAlggZDrQBKwAPKQAAAACGGMgLBgArABcp
+AAAAAJEYzgu5ASsAIykAAAAAhgi8CH4AKwArKQAAAACGCMoIEAArADQpAAAAAIYI9gl+ACwAPCkA
+AAAAhggCChAALABFKQAAAACGCN8LvQEtAE0pAAAAAIYI6wvCAS0AVikAAAAAhggOCb0BLgBeKQAA
+AACGCBwJwgEuAGcpAAAAAIYIfA3IAS8AbykAAAAAhgiIDc4BLwB4KQAAAACGCMMO1QEwAIApAAAA
+AIYIzA7bATAAiSkAAAAAhggFDpsBMQCRKQAAAACGCA8OAQAxAJopAAAAAIYI4A2bATIAoikAAAAA
+hgjrDQEAMgDFKAAAAACGGMgLBgAzAKspAAAAAIYI6g9+ADMAsykAAAAAhgjyDxAAMwC8KQAAAACG
+CNYKfgA0AMQpAAAAAIYI3QoQADQAzSkAAAAAhgjjBX4ANQDVKQAAAACGCO0FEAA1AMUoAAAAAIYY
+yAsGADYA3ikAAAAAhgjqD34ANgDmKQAAAACGCPIPEAA2AO8pAAAAAIYI5Ap+ADcA9ykAAAAAhgju
+ChAANwDFKAAAAACGGMgLBgA4AAAqAAAAAIYINQ7iATgACCoAAAAAhghADucBOAARKgAAAACGCLoK
+fgA5ABkqAAAAAIYIyAoQADkAxSgAAAAAhhjICwYAOgAiKgAAAACGCOUA7QE6ACoqAAAAAIYI7gDz
+AToAMyoAAAAAhggJDfoBOwA7KgAAAACGCBQNAAI7AMUoAAAAAIYYyAsGADwARCoAAAAAhggoDQcC
+PABMKgAAAACGCDcNDQI8AFUqAAAAAIYI3wv6AT0AXSoAAAAAhgjrCwACPQDFKAAAAACGGMgLBgA+
+AGYqAAAAAIYIPgEUAj4AbioAAAAAhghFAXkBPgB3KgAAAACGCGkDfgA/AH8qAAAAAIYIcgMQAD8A
+xSgAAAAAhhjICwYAQACIKgAAAACGGMgLBgBAAJUqAAAAAIYYyAsBAEAApCoAAAAAxADkDhEBQQDK
+KgAAAACGCBMPmwFCANIqAAAAAIYIHw8BAEIAAAABABoLAAACANsMAAADABwKAAABAPEFAAABAPEF
+AAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAAB
+APEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEF
+AAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAAB
+APEFAAABAPEFAAABAKsNAAACANULAAADAHQNAAAEABwKAAABAIAOAAABAIAOAAABAPEFAAABAPEF
+AAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAAB
+APEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEFAAABAPEF
+AAABAPEFAAABAEAPAAABAMAGAAABAPEFCQDICwEAEQDICwYAGQDICwoAKQDICxAAMQDICxAAOQDI
+CxAAQQDICxAASQDICxAAUQDICxAAWQDICxAAYQDICxAAaQDICwYAmQDICwYA4QDICwYAAQHICxUA
+2QDMBQYA2QDXBQYAEQGOCDoAcQDICwYAcQCqBgEAIQHHDUEAKQEcEEcAIQHHDVIAMQGDAFkAcQAD
+Bl8AMQHSDGQAqQBoDWoASQEHAXAAqQDaAHYAiQA5A34AIQEfDYIAUQG0CocAWQHICxAAMQFNBowA
+cQANBpIA2QDEAJ4AeQDJD6QAIQHHDakAYQG+C7AAwQDIC7sAwQCsCMUAwQCGCAEAcQHICxAAwQDR
+DwYAwQD2DQYAwQD5DcsA2QDICwYA2QCjANMA2QDvDNoAkQDICwYA2QC8DOAAeQGjCOYA2QCPD+0A
+gQFgD/MAmQFXA/oAmQH6DwMB6QDICwkBCQHICwYAqQDICwYAqQDkDhEBsQAfDwEAsQErDwEALgAL
+AGkCLgATAHICLgAbAJECLgAjAJoCLgArAMMCLgAzAMMCLgA7AMMCLgBDAJoCLgBLAMkCLgBTAMMC
+LgBbAOACQwBjACoD4wBzACoDAQFrACoDIQFrACoDQQFrACoDYQFrACoDgQFrACoDoQFrACoDwQFr
+ACoD4QFrACoDAQJrACoDIQJrACoDQQJrACoDYQJrACoDgQJrACoDoQJrACoDwQJrACoD4QJrACoD
+AQNrACoDIQNrACoDQQNrACoDYQNrACoDgQNrACoDoQNrACoDwQNrACoDiQR7AJECqQR7AJECQAdr
+ACoDYAdrACoDgAdrACoDoAdrACoDwAdrACoD4AdrACoDAAhrACoDIAhrACoDQAhrACoDYAhrACoD
+gAhrACoDoAhrACoDwAhrACoD4AhrACoDAAlrACoDIAlrACoDYAlrACoDgAlrACoDoAlrACoDwAlr
+ACoD4AlrACoDAAprACoDQAprACoDYAprACoDgAprACoDoAprACoD4AprACoDAAtrACoDIAtrACoD
+QAtrACoDgAtrACoDoAtrACoDwAtrACoD4AtrACoDIAxrACoDQAxrACoDYAxrACoDgAxrACoDwAxr
+ACoD4AxrACoDAA1rACoDIA1rACoDwA1rACoD4A1rACoDGwDPAAMAAQAGACEABwAkAAgAJgAJACcA
+CgAvAAsAMgAMADQADQA2AA4AOAAPADoAEAA8AAAAqA8YAgAANAgcAgAAfwMgAgAADgccAgAA+wUk
+AgAAIQccAgAAmA0kAgAABggcAgAAmwYkAgAAiQccAgAAqAokAgAA7wccAgAAwA8kAgAAWggcAgAA
+WwYkAgAANAccAgAAcQokAgAAowccAgAAqw4kAgAAHggcAgAAhQYkAgAAbAccAgAAlQokAgAA1Qcc
+AgAAsA8kAgAAQwgcAgAAcAYkAgAAUAccAgAAgwokAgAAvAccAgAACxAkAgAAbggcAgAA4g8gAgAA
+mQApAgAAEwQtAgAAJQsyAgAA5gM3AgAAHQ48AgAAzgggAgAABgogAgAA7wtBAgAAIAlBAgAAjA1G
+AgAA0A5MAgAAEw4pAgAA7w0pAgAA9g8gAgAA4QogAgAA8QUgAgAA9g8gAgAA8gogAgAARA5SAgAA
+zAogAgAA8gBXAgAAGA1dAgAAOw1jAgAA7wtdAgAASQEYAgAAggMgAgAAOA8pAgEABgADAAEABwAF
+AAEACAAHAAEACQAJAAEACgALAAEACwANAAEADAAPAAEADQARAAEADgATAAEADwAVAAEAEAAXAAEA
+EQAZAAEAEgAbAAEAEwAdAAEAFAAfAAEAFQAhAAEAFgAjAAEAFwAlAAEAGAAnAAEAGQApAAEAGgAr
+AAEAGwAtAAEAHAAvAAEAHQAxAAEAHgAzAAEAHwA1AAEAIAA3AAEAIQA5AAEAIgA7AAEAIwA9AAEA
+JAA/AAEAJQBBAAIAMABDAAIAMQBFAAIAMgBHAAIANABJAAIANQBLAAEANgBLAAIANwBNAAIAOgBP
+AAEAOwBPAAIAPABRAAEAPQBRAAIAPgBTAAEAPwBTAAIAQABVAAEAQQBVAAIAQgBXAAEAQwBXAAIA
+RABZAAEARQBZAAIARgBbAAEARwBbAAIASABdAAEASQBdAAIASwBfAAEATABfAAIATQBhAAEATgBh
+AAIATwBjAAEAUABjAAIAUgBlAAEAUwBlAAIAVABnAAEAVQBnAAIAVwBpAAEAWABpAAIAWQBrAAEA
+WgBrAAIAXABtAAEAXQBtAAIAXgBvAAEAXwBvAAIAYQBxAAEAYgBxAAIAYwBzAAEAZABzAAIAZgB1
+AAEAZwB1AAIAaAB3AAEAaQB3AAIAbgB5AAEAbwB5AASAAAABAAAAAAAAAAAAAAAAAFMAAAAEAAAA
+AAAAAAAAAAAYAfcAAAAAABAAAAAAAAAAAAAAACEBig4AAAAABAAAAAAAAAAAAAAAKgFGDQAAAAAE
+AAAAAAAAAAAAAAAYAbUIAAAAABAAAAAAAAAAAAAAACEB8g4AAAAAEAAAAAAAAAAAAAAAIQFJCgAA
+AAAQAAAAAAAAAAAAAAAhASYKAAAAAAAAAAABAAAAOwwAAAkAAgAKAAIACwACAAwAAgANAAIADgAC
+AA8AAgAQAAIALQBOAEcAmQAAAAAAAElEVFNDb21wb25lbnRNZXRhRGF0YTEwMABJRFRTVmFyaWFi
+bGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29udGV4dDEwMABTQ183NGIzZWFj
+MGFhZDQ0MGVjOTY4ODNjMWM2MmU0NjEyMgBJbnQzMgBJbnQ2NABnZXRfVVRGOAA8TW9kdWxlPgBn
+ZXRfdkNsaWVudElEAEdldE91dHB1dElEAFJlc3BvbnNlX1Jlc3VsdF9EYXRhAGdldF9Db21wb25l
+bnRNZXRhRGF0YQBVcGxvYWREYXRhAGdldF9kYXRhAHNldF9kYXRhAG1zY29ybGliAFRocmVhZABB
+ZGQATWFya091dHB1dHNGaW5pc2hlZABTeXN0ZW0uQ29sbGVjdGlvbnMuU3BlY2lhbGl6ZWQAZ2V0
+X2lkAHNldF9pZAA8ZGF0YT5rX19CYWNraW5nRmllbGQAPGlkPmtfX0JhY2tpbmdGaWVsZAA8bmFt
+ZT5rX19CYWNraW5nRmllbGQAPHZhbHVlPmtfX0JhY2tpbmdGaWVsZAA8ZGF0ZV9mcm9tPmtfX0Jh
+Y2tpbmdGaWVsZAA8ZGltZW5zaW9uPmtfX0JhY2tpbmdGaWVsZAA8ZGF0ZV90bz5rX19CYWNraW5n
+RmllbGQAPHRpbWVzdGFtcD5rX19CYWNraW5nRmllbGQAPG9wPmtfX0JhY2tpbmdGaWVsZAA8b3Jk
+ZXI+a19fQmFja2luZ0ZpZWxkADxtZXRyaWNzPmtfX0JhY2tpbmdGaWVsZAA8dG90YWxzPmtfX0Jh
+Y2tpbmdGaWVsZAA8ZGltZW5zaW9ucz5rX19CYWNraW5nRmllbGQAPGZpbHRlcnM+a19fQmFja2lu
+Z0ZpZWxkADxvZmZzZXQ+a19fQmFja2luZ0ZpZWxkADxsaW1pdD5rX19CYWNraW5nRmllbGQAPHJl
+c3VsdD5rX19CYWNraW5nRmllbGQAPHNvcnQ+a19fQmFja2luZ0ZpZWxkADxUaW1lb3V0PmtfX0Jh
+Y2tpbmdGaWVsZAA8a2V5PmtfX0JhY2tpbmdGaWVsZABkZWZhdWx0SW5zdGFuY2UAZ2V0X01lc3Nh
+Z2UAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0X25hbWUAc2V0X25hbWUA
+c2V0X3NrdW5hbWUARGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAU2Vj
+dXJpdHlQcm90b2NvbFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJl
+AEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAFJlc3BvbnNlAGdldF92RGF0ZQBFZGl0b3JCcm93c2Fi
+bGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0
+cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2Vt
+Ymx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3
+b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2Ny
+aXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQ
+cm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21w
+b25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1l
+Q29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRlAFBvc3RFeGVjdXRlAGdldF92YWx1ZQBz
+ZXRfdmFsdWUAc2V0X3JldmVudWUAU2VyaWFsaXplAERlc2VyaWFsaXplAFN5c3RlbS5UaHJlYWRp
+bmcARW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAc2V0X2hpdHN0
+b2NhcnRzZWFyY2gAc2V0X2NvbnZ0b2NhcnRzZWFyY2gAc2V0X3Nlc3Npb252aWV3c2VhcmNoAHNl
+dF9oaXRzdmlld3NlYXJjaABzZXRfTWF4SnNvbkxlbmd0aABVcmkAdXJpAERlY2ltYWwAU3lzdGVt
+LkNvbXBvbmVudE1vZGVsAFNDXzc0YjNlYWMwYWFkNDQwZWM5Njg4M2MxYzYyZTQ2MTIyLmRsbABz
+ZXRfc2t1bmFtZV9Jc051bGwAc2V0X3JldmVudWVfSXNOdWxsAHNldF9oaXRzdG9jYXJ0c2VhcmNo
+X0lzTnVsbABzZXRfY29udnRvY2FydHNlYXJjaF9Jc051bGwAc2V0X3Nlc3Npb252aWV3c2VhcmNo
+X0lzTnVsbABzZXRfaGl0c3ZpZXdzZWFyY2hfSXNOdWxsAHNldF9oaXRzdG9jYXJ0cGRwX0lzTnVs
+bABzZXRfY29udnRvY2FydHBkcF9Jc051bGwAc2V0X3Nlc3Npb252aWV3cGRwX0lzTnVsbABzZXRf
+aGl0c3ZpZXdwZHBfSXNOdWxsAHNldF9vcmRlcmVkdW5pdHNfSXNOdWxsAHNldF9oaXRzdG9jYXJ0
+X0lzTnVsbABzZXRfc2t1X0lzTnVsbABzZXRfc2Vzc2lvbnZpZXdfSXNOdWxsAHNldF9oaXRzdmll
+d19Jc051bGwAc2V0X3Bvc2l0aW9uY2F0ZWdvcnlfSXNOdWxsAFNldE51bGwAc2V0X1NlY3VyaXR5
+UHJvdG9jb2wAZ2V0X0l0ZW0Ac2V0X0l0ZW0AU3lzdGVtAGdldF9kYXRlX2Zyb20Ac2V0X2RhdGVf
+ZnJvbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFJlc3BvbnNlX1Jlc3VsdF9EYXRhX0RpbWVuc2lv
+bgBnZXRfZGltZW5zaW9uAHNldF9kaW1lbnNpb24AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVt
+Lkdsb2JhbGl6YXRpb24AU3lzdGVtLldlYi5TY3JpcHQuU2VyaWFsaXphdGlvbgBTeXN0ZW0uUmVm
+bGVjdGlvbgBOYW1lVmFsdWVDb2xsZWN0aW9uAFdlYkhlYWRlckNvbGxlY3Rpb24AV2ViRXhjZXB0
+aW9uAEFwcGxpY2F0aW9uRXhjZXB0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AQ3VsdHVy
+ZUluZm8AZ2V0X2RhdGVfdG8Ac2V0X2RhdGVfdG8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAATWlj
+cm9zb2Z0LlNxbFNlcnZlci5EVFNSdW50aW1lV3JhcABNaWNyb3NvZnQuU3FsU2VydmVyLkRUU1Bp
+cGVsaW5lV3JhcABzZXRfaGl0c3RvY2FydHBkcABzZXRfY29udnRvY2FydHBkcABzZXRfc2Vzc2lv
+bnZpZXdwZHAAc2V0X2hpdHN2aWV3cGRwAFNsZWVwAGdldF90aW1lc3RhbXAAc2V0X3RpbWVzdGFt
+cABnZXRfb3AAc2V0X29wAGdldF9vcmRlcgBzZXRfb3JkZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0
+QnVmZmVyAE91dHB1dEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAFNlcnZpY2VQb2ludE1hbmFn
+ZXIATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZS5XcmFwcGVyAE1pY3Jvc29mdC5TcWxT
+ZXJ2ZXIuRHRzLlBpcGVsaW5lLldyYXBwZXIAUmVxdWVzdF9GaWx0ZXIASmF2YVNjcmlwdFNlcmlh
+bGl6ZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBPdXRwdXRJRHMAZ2V0X21ldHJpY3MAc2V0X21l
+dHJpY3MAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMA
+U3lzdGVtLlJlc291cmNlcwBTQ183NGIzZWFjMGFhZDQ0MGVjOTY4ODNjMWM2MmU0NjEyMi5Qcm9w
+ZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNzRiM2VhYzBhYWQ0
+NDBlYzk2ODgzYzFjNjJlNDYxMjIuUHJvcGVydGllcwBnZXRfUmVhZE9ubHlWYXJpYWJsZXMAR2V0
+Qnl0ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAGdldF90
+b3RhbHMAc2V0X3RvdGFscwBDb250YWlucwBnZXRfZGltZW5zaW9ucwBzZXRfZGltZW5zaW9ucwBT
+eXN0ZW0uV2ViLkV4dGVuc2lvbnMAQ29ubmVjdGlvbnMAZ2V0X0hlYWRlcnMAQnVmZmVycwBnZXRf
+ZmlsdGVycwBzZXRfZmlsdGVycwBzZXRfb3JkZXJlZHVuaXRzAEZpbmlzaE91dHB1dHMAQ3JlYXRl
+TmV3T3V0cHV0Um93cwBGb3JtYXQAT2JqZWN0AFN5c3RlbS5OZXQAZ2V0X29mZnNldABzZXRfb2Zm
+c2V0AFNldEVuZE9mUm93c2V0AGdldF9saW1pdABzZXRfbGltaXQAZ2V0X0RlZmF1bHQAUmVzcG9u
+c2VfUmVzdWx0AGdldF9yZXN1bHQAc2V0X3Jlc3VsdABUaW1lb3V0V2ViQ2xpZW50AFVzZXJDb21w
+b25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBvbmVudABNaWNyb3NvZnQuU3FsU2VydmVy
+LlR4U2NyaXB0AHNldF9oaXRzdG9jYXJ0AFJlcXVlc3RfU29ydABnZXRfc29ydABzZXRfc29ydABI
+dHRwV2ViUmVxdWVzdABHZXRXZWJSZXF1ZXN0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVI
+b3N0AGdldF9UaW1lb3V0AHNldF9UaW1lb3V0AHNldF9SZWFkV3JpdGVUaW1lb3V0AHRpbWVvdXQA
+UHJpbWVPdXRwdXQAU3lzdGVtLlRleHQAR2V0VmFsdWVXaXRoQ29udGV4dABTY3JpcHRDb21wb25l
+bnRFdmFsQ29udGV4dABnZXRfRXZhbHVhdG9yQ29udGV4dABzZXRfc2t1AHNldF9zZXNzaW9udmll
+dwBzZXRfaGl0c3ZpZXcAZ2V0X05vdwBBZGRSb3cAQXJyYXkAZ2V0X3ZBcGlLZXkAZ2V0X2tleQBz
+ZXRfa2V5AGdldF9Bc3NlbWJseQBzZXRfcG9zaXRpb25jYXRlZ29yeQBFbXB0eQAAAAABAB17ADAA
+OgB5AHkAeQB5AC0ATQBNAC0AZABkAH0AAQdzAGsAdQAAIWgAaQB0AHMAXwB2AGkAZQB3AF8AcwBl
+AGEAcgBjAGgAAA9yAGUAdgBlAG4AdQBlAAAbbwByAGQAZQByAGUAZABfAHUAbgBpAHQAcwAAG2gA
+aQB0AHMAXwB2AGkAZQB3AF8AcABkAHAAABNoAGkAdABzAF8AdgBpAGUAdwAAJWgAaQB0AHMAXwB0
+AG8AYwBhAHIAdABfAHMAZQBhAHIAYwBoAAAfaABpAHQAcwBfAHQAbwBjAGEAcgB0AF8AcABkAHAA
+ABdoAGkAdABzAF8AdABvAGMAYQByAHQAACdzAGUAcwBzAGkAbwBuAF8AdgBpAGUAdwBfAHMAZQBh
+AHIAYwBoAAAhcwBlAHMAcwBpAG8AbgBfAHYAaQBlAHcAXwBwAGQAcAAAGXMAZQBzAHMAaQBvAG4A
+XwB2AGkAZQB3AAAlYwBvAG4AdgBfAHQAbwBjAGEAcgB0AF8AcwBlAGEAcgBjAGgAAB9jAG8AbgB2
+AF8AdABvAGMAYQByAHQAXwBwAGQAcAAAI3AAbwBzAGkAdABpAG8AbgBfAGMAYQB0AGUAZwBvAHIA
+eQAAB0EAUwBDAABZaAB0AHQAcABzADoALwAvAGEAcABpAC0AcwBlAGwAbABlAHIALgBvAHoAbwBu
+AC4AcgB1AC8AdgAxAC8AYQBuAGEAbAB5AHQAaQBjAHMALwBkAGEAdABhAAETQwBsAGkAZQBuAHQA
+LQBJAGQAAQd7ADAAfQAAD0EAcABpAC0ASwBlAHkAASNUAG8AbwAgAE0AYQBuAHkAIABSAGUAcQB1
+AGUAcwB0AHMAAD8SBEAENQQ8BE8EIAA+BDYEOAQ0BDAEPQQ4BE8EIAA+BD8ENQRABDAERgQ4BDgE
+IAA4BEEEQgQ1BDoEOwQ+BAFFKAA1ADAANAApACAAGARBBEIENQQ6BDsEPgQgADIEQAQ1BDwETwQg
+AD4ENgQ4BDQEMAQ9BDgETwQgAEgEOwROBDcEMAQBgJ0cBDUEQgQ+BDQEIABoAHQAdABwAHMAOgAv
+AC8AYQBwAGkALQBzAGUAbABsAGUAcgAuAG8AegBvAG4ALgByAHUALwB2ADEALwBhAG4AYQBsAHkA
+dABpAGMAcwAvAGQAYQB0AGEAIAA9BDAEIABBBDUEQAQyBDUEQAQ1BCAATwB6AG8AbgAgAD0ENQQg
+AD4EQgQyBDUERwQwBDUEQgQBI08AegBvAG4AIAAfBD4EOwQ1BDoAewAxAH0AIAB7ADAAfQABgJtJ
+AHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQA
+IAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAg
+AHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA1PAHUAdABwAHUAdAAAD3YA
+QQBwAGkASwBlAHkAABN2AEMAbABpAGUAbgB0AEkARAAAC3YARABhAHQAZQAAcVMAQwBfADcANABi
+ADMAZQBhAGMAMABhAGEAZAA0ADQAMABlAGMAOQA2ADgAOAAzAGMAMQBjADYAMgBlADQANgAxADIA
+MgAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAO4AStoleMRHs4g5
+JPl2xCcABCABAQgDIAABBSABARERBCABAQ4FIAEBEX0eBxASOR0FDhE9EiQSMBIkCA4dBRJBHRI4
+CBI4EkUCBgABARGAjQUAAg4OHAYQAQAdHgADCgEcBgACDg4dHAUAABKAmQQgAQ4cBSABHQUOBSAA
+EoCdBSACAQ4OByACHQUOHQUDIAAOBCABAg4EAAEBCAUgAQ4dBQYwAQEeAA4ECgESMAUgABKAsQQA
+ABE9BgADDg4cHAogBgEIDg4OCBACCSADARJlHQgSaQUgAgEIHAMgAAIDBwEIBgACCBJpDgUgAR0I
+CAUgABKAvQYgARKAwRwFAAASgMUGIAEcEoDJCAABEoDNEYDRBSAAEoDVByACAQ4SgNUGIAESWRJd
+CLd6XFYZNOCJCImEXc2AgMyRCDG/OFatNk41AwYSFAMGEhgDBhIMAwYSbQMGEnUDBhJ5AwYSIAIG
+DgMGHQ4EBh0SKAQGHRIsAgYIAwYSNAQGHRI4BAYdEVEEBh0SPAIGCgQgAQEKBCABAQIFIAEBEVEL
+IAQBCB0IHRJlEmkFIAEBEm0DIAAIBCAAET0EAAASdQQAABJ5BQABARJ5BAAAEiADAAABBCAAHQ4F
+IAEBHQ4FIAAdEigGIAEBHRIoBSAAHRIsBiABAR0SLAQgABI0BSABARI0BSAAHRI4BiABAR0SOAUg
+AB0RUQYgAQEdEVEFIAAdEjwGIAEBHRI8AyAACgMoAAoDKAACAygADgQoABFRAygACAQoABE9BAgA
+EnUECAASeQQIABIgBCgAHQ4FKAAdEigFKAAdEiwEKAASNAUoAB0SOAUoAB0RUQUoAB0SPAgBAAgA
+AAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfNzRiM2Vh
+YzBhYWQ0NDBlYzk2ODgzYzFjNjJlNDYxMjIAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAyNAAA
+SQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIu
+TkVUIEZyYW1ld29yayA0LjcEAQAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
+UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
+bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAATFcAAAAAAAAAAAAAZlcAAAAgAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAFhXAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwA
+AAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAGAAAgAAAAAAA
+AAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAADsAwAAAAAAAAAA
+AADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAAAQAAAAEAAAAA
+AAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQByAEYAaQBsAGUA
+SQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAETAMAAAEAUwB0
+AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAwADQAYgAwAAAAGgABAAEA
+QwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBhAG0AZQAAAAAAAAAA
+AHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwA3ADQAYgAzAGUA
+YQBjADAAYQBhAGQANAA0ADAAZQBjADkANgA4ADgAMwBjADEAYwA2ADIAZQA0ADYAMQAyADIAAAAw
+AAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAAAABwACgAAQBJAG4A
+dABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADcANABiADMAZQBhAGMAMABhAGEAZAA0ADQAMABl
+AGMAOQA2ADgAOAAzAGMAMQBjADYAMgBlADQANgAxADIAMgAuAGQAbABsAAAASAASAAEATABlAGcA
+YQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgA0
+AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIA
+aQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8ANwA0AGIAMwBlAGEAYwAwAGEAYQBk
+ADQANAAwAGUAYwA5ADYAOAA4ADMAYwAxAGMANgAyAGUANAA2ADEAMgAyAC4AZABsAGwAAABoACQA
+AQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADcANABiADMAZQBhAGMAMABhAGEAZAA0
+ADQAMABlAGMAOQA2ADgAOAAzAGMAMQBjADYAMgBlADQANgAxADIAMgAAADQACAABAFAAcgBvAGQA
+dQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMAcwBlAG0AYgBs
+AHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAMAAAAeDcAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                          </arrayElements>
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                          name="VSTAProjectName"
+                          typeConverter="NOTBROWSABLE">SC_74b3eac0aad440ec96883c1c62e46122</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the programming language used by the script."
+                          name="ScriptLanguage"
+                          typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read-only variables."
+                          name="ReadOnlyVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::vDate,User::vApiKey,User::vClientID</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read/write variables."
+                          name="ReadWriteVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                        <property
+                          dataType="System.String"
+                          description="List of breakpoints present on the script."
+                          isArray="true"
+                          name="BreakpointCollection"
+                          typeConverter="NOTBROWSABLE">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Checksum to match component metedata against compiled codes."
+                          name="MetadataChecksum140"
+                          typeConverter="NOTBROWSABLE">CC</property>
+                        <property
+                          dataType="System.String"
+                          name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                      </properties>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output]"
+                          hasSideEffects="true"
+                          name="Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku]"
+                              dataType="i8"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku]"
+                              name="sku" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku_name]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku_name]"
+                              name="sku_name" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[revenue]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[revenue]"
+                              name="revenue"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[ordered_units]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[ordered_units]"
+                              name="ordered_units"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_search]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_search]"
+                              name="hits_view_search"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_pdp]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_pdp]"
+                              name="hits_view_pdp"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view]"
+                              name="hits_view"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_search]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_search]"
+                              name="hits_tocart_search"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_pdp]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_pdp]"
+                              name="hits_tocart_pdp"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart]"
+                              name="hits_tocart"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_search]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_search]"
+                              name="session_view_search"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_pdp]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_pdp]"
+                              name="session_view_pdp"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view]"
+                              name="session_view"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_search]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_search]"
+                              name="conv_tocart_search"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_pdp]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_pdp]"
+                              name="conv_tocart_pdp"
+                              precision="15"
+                              scale="3" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[position_category]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[position_category]"
+                              name="position_category"
+                              precision="15"
+                              scale="3" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+                      description="Назначение &quot;OLE DB&quot;"
+                      name="Приемник"
+                      usesDispositions="true"
+                      validateExternalMetadata="False"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                          name="OpenRowset">[BUFFER].[Ozon_v1_analytics_data]</property>
+                        <property
+                          dataType="System.String"
+                          description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="Команда SQL для выполнения."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                          name="DefaultCodePage">1251</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает используемый режим доступа к базе данных."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Connections[OleDbConnection]"
+                          connectionManagerID="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}:invalid"
+                          connectionManagerRefId="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}:invalid"
+                          description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                          errorOrTruncationOperation="Вставить"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="Вход назначения &quot;OLE DB&quot;">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[sku]"
+                              cachedDataType="i8"
+                              cachedName="sku"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[sku]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[sku_name]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="sku_name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[sku_name]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[sku_name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[revenue]"
+                              cachedDataType="numeric"
+                              cachedName="revenue"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[revenue]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[revenue]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[ordered_units]"
+                              cachedDataType="numeric"
+                              cachedName="ordered_units"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ordered_units]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[ordered_units]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_view_search]"
+                              cachedDataType="numeric"
+                              cachedName="hits_view_search"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view_search]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_search]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_view_pdp]"
+                              cachedDataType="numeric"
+                              cachedName="hits_view_pdp"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view_pdp]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view_pdp]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_view]"
+                              cachedDataType="numeric"
+                              cachedName="hits_view"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_view]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_tocart_search]"
+                              cachedDataType="numeric"
+                              cachedName="hits_tocart_search"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart_search]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_search]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_tocart_pdp]"
+                              cachedDataType="numeric"
+                              cachedName="hits_tocart_pdp"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart_pdp]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart_pdp]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[hits_tocart]"
+                              cachedDataType="numeric"
+                              cachedName="hits_tocart"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[hits_tocart]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[session_view_search]"
+                              cachedDataType="numeric"
+                              cachedName="session_view_search"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view_search]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_search]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[session_view_pdp]"
+                              cachedDataType="numeric"
+                              cachedName="session_view_pdp"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view_pdp]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view_pdp]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[session_view]"
+                              cachedDataType="numeric"
+                              cachedName="session_view"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[session_view]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[conv_tocart_search]"
+                              cachedDataType="numeric"
+                              cachedName="conv_tocart_search"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[conv_tocart_search]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_search]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[conv_tocart_pdp]"
+                              cachedDataType="numeric"
+                              cachedName="conv_tocart_pdp"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[conv_tocart_pdp]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[conv_tocart_pdp]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[position_category]"
+                              cachedDataType="numeric"
+                              cachedName="position_category"
+                              cachedPrecision="15"
+                              cachedScale="3"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[position_category]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output].Columns[position_category]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[data]"
+                              cachedDataType="date"
+                              cachedName="data"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[data]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Выход производного столбца].Columns[data]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[id_Account]"
+                              cachedDataType="i4"
+                              cachedName="id_Account"
+                              externalMetadataColumnId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[id_Account]"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Выход производного столбца].Columns[id_Account]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[data]"
+                              dataType="dbDate"
+                              name="data" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[sku]"
+                              dataType="i8"
+                              name="sku" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[sku_name]"
+                              dataType="wstr"
+                              length="200"
+                              name="sku_name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[revenue]"
+                              dataType="numeric"
+                              name="revenue"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ordered_units]"
+                              dataType="numeric"
+                              name="ordered_units"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view_search]"
+                              dataType="numeric"
+                              name="hits_view_search"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view_pdp]"
+                              dataType="numeric"
+                              name="hits_view_pdp"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_view]"
+                              dataType="numeric"
+                              name="hits_view"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart_search]"
+                              dataType="numeric"
+                              name="hits_tocart_search"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart_pdp]"
+                              dataType="numeric"
+                              name="hits_tocart_pdp"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[hits_tocart]"
+                              dataType="numeric"
+                              name="hits_tocart"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view_search]"
+                              dataType="numeric"
+                              name="session_view_search"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view_pdp]"
+                              dataType="numeric"
+                              name="session_view_pdp"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[session_view]"
+                              dataType="numeric"
+                              name="session_view"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[conv_tocart_search]"
+                              dataType="numeric"
+                              name="conv_tocart_search"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[conv_tocart_pdp]"
+                              dataType="numeric"
+                              name="conv_tocart_pdp"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[position_category]"
+                              dataType="numeric"
+                              name="position_category"
+                              precision="15"
+                              scale="3" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SYSMOMENT]"
+                              dataType="dbTimeStamp"
+                              name="SYSMOMENT" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[id_Account]"
+                              dataType="i4"
+                              name="id_Account" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                          synchronousInputId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Output]"
+                      endId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Inputs[Вход производного столбца]"
+                      name="Output"
+                      startId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник.Outputs[Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Выход производного столбца]"
+                      endId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Inputs[Вход производного столбца]"
+                      name="Выход производного столбца"
+                      startId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount.Outputs[Выход производного столбца]" />
+                    <path
+                      refId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Выход производного столбца1]"
+                      endId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                      name="Выход производного столбца"
+                      startId="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data.Outputs[Выход производного столбца]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\загружаемые даты\загрузка в стейджинг"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{F22A9EB4-5680-49BA-B75A-520C6F6385F4}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="загрузка в стейджинг"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+                  SQLTask:SqlStatementSource="DECLARE @id_account int, @Data date&#xA;&#xA;SELECT TOP 1 @id_account = [id_Account], @Data = [data] FROM [BUFFER].[Ozon_v1_analytics_data]&#xA;&#xA;DELETE TGT&#xA;FROM &#xA;[Ozon].[v1_analytics_data] TGT&#xA;WHERE&#xA;TGT.id_account = @id_account&#xA;AND TGT.[Data] = @Data&#xA;&#xA;INSERT INTO [Ozon].[v1_analytics_data]&#xA;(&#xA;&#x9;[id_Account]&#xA;    ,[data]&#xA;    ,[sku]&#xA;    ,[sku_name]&#xA;    ,[revenue]&#xA;    ,[ordered_units]&#xA;    ,[hits_view_search]&#xA;    ,[hits_view_pdp]&#xA;    ,[hits_view]&#xA;    ,[hits_tocart_search]&#xA;    ,[hits_tocart_pdp]&#xA;    ,[hits_tocart]&#xA;    ,[session_view_search]&#xA;    ,[session_view_pdp]&#xA;    ,[session_view]&#xA;    ,[conv_tocart_search]&#xA;    ,[conv_tocart_pdp]&#xA;    ,[position_category]&#xA;    ,[SYSMOMENT]&#xA;)&#xA;SELECT&#xA;&#x9;[id_Account]&#xA;&#x9;,[data]&#xA;&#x9;,[sku]&#xA;&#x9;,[sku_name]&#xA;&#x9;,[revenue]&#xA;&#x9;,[ordered_units]&#xA;&#x9;,[hits_view_search]&#xA;&#x9;,[hits_view_pdp]&#xA;&#x9;,[hits_view]&#xA;&#x9;,[hits_tocart_search]&#xA;&#x9;,[hits_tocart_pdp]&#xA;&#x9;,[hits_tocart]&#xA;&#x9;,[session_view_search]&#xA;&#x9;,[session_view_pdp]&#xA;&#x9;,[session_view]&#xA;&#x9;,[conv_tocart_search]&#xA;&#x9;,[conv_tocart_pdp]&#xA;&#x9;,[position_category]&#xA;&#x9;,GETDATE()&#xA;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[id_Account]&#xA;&#x9;&#x9;&#x9;,[data]&#xA;&#x9;&#x9;&#x9;,[sku]&#xA;&#x9;&#x9;&#x9;,[sku_name]&#xA;&#x9;&#x9;&#x9;,[revenue]&#xA;&#x9;&#x9;&#x9;,[ordered_units]&#xA;&#x9;&#x9;&#x9;,[hits_view_search]&#xA;&#x9;&#x9;&#x9;,[hits_view_pdp]&#xA;&#x9;&#x9;&#x9;,[hits_view]&#xA;&#x9;&#x9;&#x9;,[hits_tocart_search]&#xA;&#x9;&#x9;&#x9;,[hits_tocart_pdp]&#xA;&#x9;&#x9;&#x9;,[hits_tocart]&#xA;&#x9;&#x9;&#x9;,[session_view_search]&#xA;&#x9;&#x9;&#x9;,[session_view_pdp]&#xA;&#x9;&#x9;&#x9;,[session_view]&#xA;&#x9;&#x9;&#x9;,[conv_tocart_search]&#xA;&#x9;&#x9;&#x9;,[conv_tocart_pdp]&#xA;&#x9;&#x9;&#x9;,[position_category]&#xA;&#x9;&#x9;&#x9;,ROW_NUMBER() OVER (PARTITION BY [id_Account], [data], [sku] ORDER BY CURRENT_TIMESTAMP) RN&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;[BUFFER].[Ozon_v1_analytics_data]&#xA;&#x9;) TMP&#xA;WHERE&#xA;&#x9;RN = 1&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\загружаемые даты\очистка буфера"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{F00CE724-5E70-4ACA-A963-EF5B065263C0}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="очистка буфера"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [BUFFER].[Ozon_v1_analytics_data]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\загружаемые даты.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{4037EEE8-8752-41DF-B59A-9D54C17FDC4B}"
+              DTS:From="Package\Foreach Loop Container\загружаемые даты\очистка буфера"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\загружаемые даты.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{B839F877-333A-4457-8B70-7CC62BC02322}"
+              DTS:From="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Foreach Loop Container\загружаемые даты\загрузка в стейджинг" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0B1D41D6-9F01-433C-B669-66FCEE1B6A84}"
+              DTS:ObjectName="{0B1D41D6-9F01-433C-B669-66FCEE1B6A84}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::vDate" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Создание буферной таблицы"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1B0A29CF-D1D7-4B1E-BEAB-B7EA94A69A59}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Создание буферной таблицы"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+              SQLTask:SqlStatementSource="&#xA;if exists (select 1&#xA;            from  sysobjects&#xA;           where  id = object_id('[buffer].[Ozon_v1_analytics_data]')&#xA;            and   type = 'U')&#xA;   drop table [buffer].Ozon_v1_analytics_data&#xA;&#xA;SELECT TOP 0 * INTO [buffer].[Ozon_v1_analytics_data] FROM [Ozon].[v1_analytics_data]&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Удаление буферной таблицы"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{11663E80-52FB-4727-B0C4-71C959870558}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Удаление буферной таблицы"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0AFE73E7-6D6D-4ECC-A945-CD8BD8053E9F}"
+              SQLTask:SqlStatementSource="&#xA;if exists (select 1&#xA;            from  sysobjects&#xA;           where  id = object_id('[buffer].[Ozon_v1_analytics_data]')&#xA;            and   type = 'U')&#xA;   drop table [buffer].Ozon_v1_analytics_data" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E933280F-8933-4CDC-B337-1B7D0D13FA0A}"
+          DTS:From="Package\Foreach Loop Container\Создание буферной таблицы"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Диапазон дат" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E933CEDE-F389-4B02-AE99-DE7EA8C37D3B}"
+          DTS:From="Package\Foreach Loop Container\Диапазон дат"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\загружаемые даты" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{D21BFF8C-CA16-4969-B209-C3B1EFC06FF6}"
+          DTS:From="Package\Foreach Loop Container\загружаемые даты"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\Удаление буферной таблицы" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{329CC279-CD2C-4BF1-8EAD-7CD4A844CDC2}"
+          DTS:ObjectName="{329CC279-CD2C-4BF1-8EAD-7CD4A844CDC2}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::vName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{4C58EC88-40DB-4CFC-91AA-CBB1B8506EA6}"
+          DTS:ObjectName="{4C58EC88-40DB-4CFC-91AA-CBB1B8506EA6}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::vClientID" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D46F76E1-53AD-44B3-A83E-9337E3ECF359}"
+          DTS:ObjectName="{D46F76E1-53AD-44B3-A83E-9337E3ECF359}"
+          DTS:ValueIndex="3"
+          DTS:VariableName="User::vApiKey" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{8D30E286-2768-4C40-8A6A-8DDB649212F4}"
+          DTS:ObjectName="{8D30E286-2768-4C40-8A6A-8DDB649212F4}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::vId_Account" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AB5E6FBA-4788-4979-BA64-D807D3697AA8}"
+      DTS:From="Package\Account"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Account"
+          TopLeft="179,385" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Foreach Loop Container\Диапазон дат"
+          TopLeft="89,96" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы"
+          TopLeft="9.5,72.3928571428571" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\загрузка в стейджинг"
+          TopLeft="28.3571428571429,140.392857142857" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\очистка буфера"
+          TopLeft="43,6" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\загружаемые даты.PrecedenceConstraints[Constraint]"
+          TopLeft="124.25,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.3928571428571"
+              Start="0,0"
+              End="0,16.8928571428571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8928571428571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\загружаемые даты.PrecedenceConstraints[Constraint 1]"
+          TopLeft="122.678571428571,114.392857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.9999999999999"
+              Start="0,0"
+              End="0,18.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="249,237"
+          Size="249,280"
+          Id="Package\Foreach Loop Container\загружаемые даты"
+          TopLeft="55,178" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Foreach Loop Container\Создание буферной таблицы"
+          TopLeft="64.0357142857138,30" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Foreach Loop Container\Удаление буферной таблицы"
+          TopLeft="99.8928571428569,486.857142857143" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="172.767857142857,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="170.5,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9,40"
+              Start="0,0"
+              End="9,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="4,20" />
+                  <mssgle:LineSegment
+                    End="5,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,20"
+                    Point2="9,20"
+                    Point3="9,24" />
+                  <mssgle:LineSegment
+                    End="9,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="179.5,458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.8928571428569,28.857142857143"
+              Start="0,0"
+              End="11.8928571428569,21.357142857143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.4285714285715" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.4285714285715"
+                    Point2="0,14.4285714285715"
+                    Point3="4,14.4285714285715" />
+                  <mssgle:LineSegment
+                    End="7.89285714285688,14.4285714285715" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.89285714285688,14.4285714285715"
+                    Point2="11.8928571428569,14.4285714285715"
+                    Point3="11.8928571428569,18.4285714285715" />
+                  <mssgle:LineSegment
+                    End="11.8928571428569,21.357142857143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="380,584"
+          Size="380,627"
+          Id="Package\Foreach Loop Container"
+          TopLeft="411,87" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="295,403.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116,0"
+              Start="0,0"
+              End="108.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="108.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="https://api-seller.ozon.ru/v1/analytics/data"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="254,40"
+          Id="5b3c2a05-c82b-48c7-a69f-9535f0fb4381"
+          TopLeft="184,18" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Источник"
+          TopLeft="220,205" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник"
+          TopLeft="900,206" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\idAccount"
+          TopLeft="417,204" />
+        <NodeLayout
+          Size="100,42"
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\data"
+          TopLeft="688,208" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Выход производного столбца1]"
+          TopLeft="788,228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,0"
+              Start="0,0"
+              End="104.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Выход производного столбца]"
+          TopLeft="605,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83,0"
+              Start="0,0"
+              End="75.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы.Paths[Output]"
+          TopLeft="345,225.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,0"
+              Start="0,0"
+              End="64.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\загружаемые даты\Загрузка в буферные таблицы\Приемник">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
